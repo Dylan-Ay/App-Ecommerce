@@ -36,6 +36,7 @@
             //Les doubles crochets indiquent que nous ajoutons une nouvelle entrée au futur tableau 'products'
             //Associé à la clé 'products'
                 $_SESSION['products'][] = $product;
+                unset($_SESSION['delete']);
             }
             //On attribut à $_SESSION['message'] une div si le produit a bien été ajouté
                 $_SESSION['message'] = 
@@ -70,7 +71,10 @@
                     $name = $_SESSION['products'][$index]['name'];
                     unset($_SESSION['products'][$index]);
                     unset($_SESSION['message']);
-                    echo "<script>alert('$name a été supprimé')</script>";
+                    $_SESSION['delete'] = 
+                    "<div class='alert alert-success text-center' role='alert'>
+                        Le produit <strong>$name</strong> a bien été supprimé de la liste
+                    </div>";
                 }else{
                     echo "Erreur";
                 }
@@ -84,9 +88,10 @@
                 $index = $_GET['index'];
                 if (isset($_SESSION['products'][$index])){
                 //Si un index existe, Alors on incrémente la quantié de 1 pour l'index concerné et on additione le prix au total à chaque clique
-                $_SESSION['products'][$index]['qtt'] = $_SESSION['products'][$index]['qtt'] + 1;
-                $_SESSION['products'][$index]['total'] += $_SESSION['products'][$index]['price'];
-                unset($_SESSION['message']);
+                    $_SESSION['products'][$index]['qtt'] = $_SESSION['products'][$index]['qtt'] + 1;
+                    $_SESSION['products'][$index]['total'] += $_SESSION['products'][$index]['price'];
+                    unset($_SESSION['message']);
+                    unset($_SESSION['delete']);
                 }
             }
             header('Location: recap.php');
@@ -97,10 +102,18 @@
             if (isset($_GET['index'])){
                 $index = $_GET['index'];
                 //Si un index existe, et si la quantité est supérieur à 0 et si le total est supérieur à 0 Alors on décrémente la quantité de 1 et on soustrait le prix au total à chaque clique
-                if (isset($_SESSION['products'][$index]) && $_SESSION['products'][$index]['qtt'] > 0 && $_SESSION['products'][$index]['total'] > 0){
-                $_SESSION['products'][$index]['qtt'] = $_SESSION['products'][$index]['qtt'] - 1;
-                $_SESSION['products'][$index]['total'] -= $_SESSION['products'][$index]['price'];
-                unset($_SESSION['message']);
+                if (isset($_SESSION['products'][$index]) && $_SESSION['products'][$index]['qtt'] > 1 && $_SESSION['products'][$index]['total'] > 1){
+                    $_SESSION['products'][$index]['qtt'] = $_SESSION['products'][$index]['qtt'] - 1;
+                    $_SESSION['products'][$index]['total'] -= $_SESSION['products'][$index]['price'];
+                    unset($_SESSION['message']);
+                    unset($_SESSION['delete']);
+                }else if (isset($_SESSION['products'][$index]) && $_SESSION['products'][$index]['qtt'] === 1){
+                    $name = $_SESSION['products'][$index]['name'];
+                    unset($_SESSION['products'][$index]);
+                    $_SESSION['delete'] = 
+                    "<div class='alert alert-success text-center' role='alert'>
+                        Le produit <strong>$name</strong> a bien été supprimé de la liste
+                    </div>";
                 }
             }
             header('Location: recap.php');

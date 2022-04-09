@@ -14,6 +14,7 @@
             if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
                 echo "<p class='text-center'>Vous n'avez ajouté aucun produit...</p>";
             } else {
+                if (isset($_SESSION['delete'])): echo $_SESSION['delete']; endif; 
                 //En-tête du tableau
                 echo "<table class='m-auto table table-responsive'>",
                         "<thead>",
@@ -63,10 +64,10 @@
             </p>';
             }
         ?>
+        <?php //var_dump($_SESSION['products'])?>
     </div>
     <?php include('js.php');?>
     <pre>
-        <?php //var_dump($_SESSION['products'])?>
     </pre>
 </body>
 </html>
