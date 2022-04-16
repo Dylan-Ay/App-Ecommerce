@@ -1,0 +1,115 @@
+/*The designs were created to the following widths:
+
+- Mobile: 375px
+- Desktop: 1440px
+*/
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+td {
+  border-bottom: unset;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.light {
+  font-weight: 400;
+}
+
+header h1 {
+  border-bottom: 1px solid #eee;
+}
+
+header .navbar-brand {
+  font-weight: 700;
+  font-size: 30px;
+}
+
+header figure {
+  position: relative;
+  margin: 0;
+}
+
+header figure img {
+  height: 20px;
+}
+
+header .fa-regular {
+  font-size: 22px;
+}
+
+header figcaption {
+  position: absolute;
+  background-color: #ff7d1a;
+  color: white;
+  border-radius: 35px;
+  top: -3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  right: -9px;
+  height: 14px;
+  font-size: 12px;
+  width: 23px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header .active {
+  font-weight: 700;
+}
+
+header .nav-link {
+  color: black;
+}
+
+#recap .btn {
+  width: 200px;
+}
+
+#recap .qtt {
+  width: 70px;
+  border-radius: unset;
+}
+
+#recap .qtt:disabled {
+  background-color: white;
+}
+
+#recap .name {
+  width: 100px;
+}
+
+#recap .price {
+  width: 100px;
+}
+
+#recap .arrow-container {
+  background-color: black;
+  width: 16px;
+}
+
+#recap .arrow-container a {
+  color: white;
+}
+
+#recap .arrow-container a:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: black;
+}
+/*# sourceMappingURL=style.css.map */

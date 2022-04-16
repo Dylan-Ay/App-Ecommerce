@@ -73,7 +73,7 @@
                     unset($_SESSION['message']);
                     $_SESSION['delete'] = 
                     "<div class='alert alert-success text-center' role='alert'>
-                        Le produit <strong>$name</strong> a bien été supprimé de la liste
+                        Le produit <strong>$name</strong> a bien été supprimé du panier.
                     </div>";
                 }else{
                     echo "Erreur";
@@ -118,7 +118,6 @@
             }
             header('Location: recap.php');
         break;
-    }
-}else echo "Un problème est survenu";
+        }
+    }else echo "Un problème est survenu";
 ?>
-<script src="/Appli-PHP/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

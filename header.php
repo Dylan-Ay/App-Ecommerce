@@ -6,36 +6,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/aadee783c9.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+        <nav class="navbar navbar-expand-lg py-3">
             <div class="container">
-                <a class="navbar-brand" href="index.php">Appli PHP 1</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="row">
+                    <div class="col d-flex">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                        </div>
+                    <div class="col">
+                        <a class="navbar-brand" href="index.php">Sneakers</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <figure>
+                            <a href="recap.php">
+                                <img src="images/icon-cart-1.svg" alt="Icon panier">
+                            </a>
+                            <figcaption>
+                                <?php 
+                                    if ( isset($_SESSION['products'])){ 
+                                        echo count($_SESSION['products']);
+                                    }else{
+                                        echo 0;
+                                    }
+                                ?>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="col d-flex align-items-end">
+                        <a href="login.php">
+                            <i class="fa-regular fa-circle-user"></i>
+                        </a>
+                    </div>
+                </div>
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav flex-row justify-content-center">
+                    <ul class="navbar-nav justify-content-center align-items-center py-4">
                         <li class="nav-item active">
-                            <a class="nav-link flex-grow-1" href="index.php">Accueil</a>
+                            <a class="nav-link" href="index.php">Accueil</a>
                         </li>
-                        <li class="nav-item mx-5">
-                            <a class="nav-link" href="recap.php">Récapitulatif</a>
+                        <li class="nav-item mx-lg-5">
+                            <a class="nav-link" href="#">Collections</a>
                         </li>
-                        <span class="d-flex align-items-center font-weight-bold">Nombre de produits : 
-                            <?php 
-                            if ( isset($_SESSION['products'])){ 
-                                echo count($_SESSION['products']);
-                            }else{
-                                echo 0;
-                            }
-                            ?>
-                        </span>
+                        <li class="nav-item mx-lg-5">
+                            <a class="nav-link" href="#">Men</a>
+                        </li>
+                        <li class="nav-item mx-lg-5">
+                            <a class="nav-link" href="#">Women</a>
+                        </li>
+                        <li class="nav-item mx-lg-5">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item mx-lg-5">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
                     </ul>
                 </div>   
             </div>
         </nav>
-        <h1 class="text-center py-5"><?= $h1?></h1>
+        <h1 class="text-center py-5 mx-3"><?= $h1?></h1>
     </header>
+    <main>
