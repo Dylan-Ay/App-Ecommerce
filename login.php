@@ -4,6 +4,7 @@
     $title = "Page de connexion";
     include('header.php');
 ?>
+<?php if (!isset($_SESSION['mail'])):?>
 <div class="container">
     <div class="row pb-5 pt-3">
         <div class="col-12 pb-5">
@@ -25,4 +26,5 @@
         </div>
     </div>
 </div>
+<?php else: header('Location: account.php '); endif;?>
 <?php include('footer.php');?>

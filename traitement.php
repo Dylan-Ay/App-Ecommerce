@@ -52,7 +52,7 @@
         }
 
         // Suite du case
-        header('Location: index.php');
+            header('Location: recap.php');
         break;
         // Le cas de ?action=delete-all
         case "delete-all":
@@ -118,6 +118,29 @@
             }
             header('Location: recap.php');
         break;
-        }
+            // Le cas de ?action=order lorsqu'on clique sur commander dans recap.php
+        case "order":
+            
+            if (isset($_SESSION['mail'])){
+                header('Location: order_page.php');
+            }else{
+                header('Location: login.php');
+            }
+        break;
+            // Lorsqu'on clique sur le panier cela enlève les différents messages en session
+        case "unset-panier":
+            unset($_SESSION['account-created']);
+            unset($_SESSION['delete']);
+            unset($_SESSION['message']);
+            header('Location: recap.php');
+        break;
+            // Lorsqu'on clique sur le logo accueil cela enlève les différents messages en session
+        case "unset-accueil":
+            unset($_SESSION['account-created']);
+            unset($_SESSION['delete']);
+            unset($_SESSION['message']);
+            header('Location: index.php');
+        break;
+    }
     }else echo "Un problème est survenu";
 ?>

@@ -21,13 +21,13 @@
                         </button>
                         </div>
                     <div class="col">
-                        <a class="navbar-brand" href="index.php">Sneakers</a>
+                        <a class="navbar-brand" href="traitement.php?action=unset-accueil">Sneakers</a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <figure>
-                            <a href="recap.php">
+                            <a href="traitement.php?action=unset-panier">
                                 <img src="images/icon-cart-1.svg" alt="Icon panier">
                             </a>
                             <figcaption>

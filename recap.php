@@ -59,7 +59,7 @@
             "</tfoot>",
         "</table>",
         '<p class="py-4">
-            <a class="d-flex justify-content-center m-auto btn btn-outline-dark" href="login.php">Commander</a>
+            <a class="d-flex justify-content-center m-auto btn btn-outline-dark" href="traitement.php?action=order">Commander</a>
         </p>',
         '<p class="">
             <a class="d-flex justify-content-center m-auto mt-3 btn btn-outline-dark" href="traitement.php?action=delete-all">Vider le panier</a>
