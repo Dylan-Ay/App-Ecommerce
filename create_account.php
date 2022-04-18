@@ -3,111 +3,6 @@
     $h1 = "Informations sur le compte";
     $title = "Création de compte";
     include('header.php');
-
-    // Définitions des cookies et des sessions et on vérifie si POST existe
-    if ($_SERVER["REQUEST_METHOD"] === "POST"){
-        
-        if (!empty($_POST['firstname'])){
-            setcookie('firstname', $_POST['firstname']);
-            $firstName = $_POST['firstname'];
-        }else{
-            $message = 
-            '<div class="alert alert-danger text-center" role="alert">
-                Le formulaire comporte une erreur
-            </div>';
-        }
-        if (!empty($_POST['lastname'])){
-            setcookie('lastname', $_POST['lastname']);
-            $lastName = $_POST['lastname'];
-        }else{
-            $message = 
-            '<div class="alert alert-danger text-center" role="alert">
-                Le formulaire comporte une erreur
-            </div>';
-        }
-
-        if (!empty($_POST['mail'])){
-            $_SESSION['mail'] = $_POST['mail'];
-            $mail = $_POST['mail'];
-        }else{
-            $message = 
-            '<div class="alert alert-danger text-center" role="alert">
-                Le formulaire comporte une erreur
-            </div>';
-        }
-
-        if (!empty($_POST['adress'])){
-            setcookie('adress', $_POST['adress']);
-            $adress = $_POST['adress'];
-        }else{
-            $message = 
-            '<div class="alert alert-danger text-center" role="alert">
-                Le formulaire comporte une erreur
-            </div>';
-        }
-
-        if (!empty($_POST['city'])){
-            setcookie('city', $_POST['city']);
-            $city = $_POST['city'];
-        }else{
-            $message = 
-            '<div class="alert alert-danger text-center" role="alert">
-                Le formulaire comporte une erreur
-            </div>';
-        }
-
-        if (!empty($_POST['zip'])){
-            setcookie('zip', $_POST['zip']);
-            $zip = $_POST['zip'];
-        }else{
-            $message = 
-            '<div class="alert alert-danger text-center" role="alert">
-                Le formulaire comporte une erreur
-            </div>';
-        }
-
-        if (!empty($_POST['country'])){
-            setcookie('country', $_POST['country']);
-            $country = $_POST['country'];
-        }else{
-            $message = 
-            '<div class="alert alert-danger text-center" role="alert">
-                Le formulaire comporte une erreur
-            </div>';
-        }
-
-        if (!empty($_POST['dpt'])){
-            setcookie('dpt', $_POST['dpt']);
-            $dpt = $_POST['dpt'];
-        }else{
-            $message = 
-            '<div class="alert alert-danger text-center" role="alert">
-                Le formulaire comporte une erreur
-            </div>';
-        }
-        if (!empty($_POST['phone'])){
-            setcookie('phone', $_POST['phone']);
-            $phone = $_POST['phone'];
-        }else{
-            $message = 
-            '<div class="alert alert-danger text-center" role="alert">
-                Le formulaire comporte une erreur
-            </div>';
-        }
-        if (!empty($_POST['pswd']) && !empty($_POST['pswd-confirmation']) && $_POST['pswd'] === $_POST['pswd-confirmation']){
-            $_SESSION['pswd'] = $_POST['pswd'];
-        }else{
-            $message = 
-            '<div class="alert alert-danger text-center" role="alert">
-                Le formulaire comporte une erreur.
-            </div>';
-        }
-        $_SESSION['account-created'] = 
-        '<div class="alert alert-success text-center" role="alert">
-            Votre compte a été crée.
-        </div>';
-        header('Location: account.php');
-    }
 ?>
 <div class="container">
     <p class="py-3">
@@ -116,9 +11,9 @@
             <span class="red bold">*</span> Information requise.
         </p>
     </p>
-    <?php if (isset($message)): echo $message; endif;?>
+    <?php if (isset($_SESSION['error-form'])): echo $_SESSION['error-form']; endif;?>
         <h3 class="text-center pt-5">Vos données personnels</h3>
-        <form action="create_account.php" class="form-group d-flex flex-column" method="post">
+        <form action="user_create.php" class="form-group d-flex flex-column" method="post">
             <label for="firstname">Prénom <span class="red">*</span></label>
             <input class="py-2" type="text" name="firstname" id="firstname" required>
 
@@ -149,22 +44,13 @@
 
         <h3 class="text-center pt-5">Votre mot de passe <span class="red">*</span></h3>
             <label for="pswd">Mot de passe <span class="red">*</span></label>
-            <input class="py-2" type="password" name="pswd" id="pswd" required>
+            <input class="py-2" type="password" name="pswd" id="pswd" >
 
             <label class="mt-3" for="pswd-confirmation">Confirmez votre mot de passe <span class="red">*</span></label>
-            <input class="py-2 mb-4" type="password" name="pswd-confirmation" id="pswd-confirmation" required>
+            <input class="py-2 mb-4" type="password" name="pswd-confirmation" id="pswd-confirmation" >
 
             <input class="btn btn-dark w-50 m-auto" type="submit" value="Créer mon compte">
         </form>
-
-    <?php // var_dump($_POST)?>
-    <br>
-    <?php // var_dump($_COOKIE['firstname'])?>
-    <br>
-    <?php // var_dump($_COOKIE['lastname'])?>
-    <?php // var_dump($_SESSION['mail'])?>
-    <br>
-    <?php // var_dump($_SESSION['pswd'])?>
 </div>
 
 <?php include('footer.php');?>

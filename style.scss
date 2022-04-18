@@ -14,6 +14,7 @@ $black: hsl(0, 0%, 0%);
 //Typography
 $font: 'Kumbh Sans', sans-serif;
 $light-weight: 400;
+$half-weight: 500;
 $bold-weight: 700;
 
 /*The designs were created to the following widths:
@@ -38,6 +39,9 @@ td{
 }
 .bold{
     font-weight: $bold-weight;
+}
+.half-bold{
+    font-weight: $half-weight;
 }
 .light{
     font-weight: $light-weight;

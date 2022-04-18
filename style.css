@@ -23,6 +23,10 @@ td {
   font-weight: 700;
 }
 
+.half-bold {
+  font-weight: 500;
+}
+
 .light {
   font-weight: 400;
 }

@@ -129,18 +129,26 @@
         break;
             // Lorsqu'on clique sur le panier cela enlève les différents messages en session
         case "unset-panier":
-            unset($_SESSION['account-created']);
             unset($_SESSION['delete']);
             unset($_SESSION['message']);
+            unset($_SESSION['wrong-id']);
+            unset($_SESSION['error-form']);
             header('Location: recap.php');
         break;
             // Lorsqu'on clique sur le logo accueil cela enlève les différents messages en session
         case "unset-accueil":
-            unset($_SESSION['account-created']);
             unset($_SESSION['delete']);
             unset($_SESSION['message']);
+            unset($_SESSION['wrong-id']);
+            unset($_SESSION['error-form']);
             header('Location: index.php');
         break;
+            // Cas de la déconnexion
+        case "logout":
+            session_destroy();
+            header('Location: logout.php');
+        break;  
     }
-    }else echo "Un problème est survenu";
+}else echo "Un problème est survenu";
+
 ?>

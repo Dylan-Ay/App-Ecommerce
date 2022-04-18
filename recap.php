@@ -66,7 +66,5 @@
         </p>';
         }
     ?>
-    <?php //var_dump($_SESSION['products'])?>
 </div>
-
 <?php include('footer.php');?>
