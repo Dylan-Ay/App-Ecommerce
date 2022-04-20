@@ -8,7 +8,7 @@ try {
         charset=utf8',
         'root'
     );
-    $mysqlClient->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $mysqlClient->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch(Exception $e) {
-    die('Erreur : '.$e->getMessage());
+    echo $e->getMessage();
 }

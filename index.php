@@ -3,10 +3,10 @@
     $h1 = "Ajouter un produit";
     $title = "Ajouter un produit";
     include('header.php');
-    ?>
+?>
+
 <div class="container">
-    <!-- Si la session 'message' existe, afficher le contenu de $_SESSION['message']-->
-<?php if (isset($_SESSION['message'])): echo $_SESSION['message']; endif;?>
+    <?php if (isset($_SESSION['message'])): echo $_SESSION['message']; endif;?>
     <div class="row m-auto">
         <form class=" align-items-center form-group d-flex flex-column m-auto w-50" action="traitement.php?action=add" method="post">
             <p>
@@ -24,7 +24,7 @@
             <p>
                 <label>
                     Quantité désirée :
-                    <input class="form-control" type="number" name="qtt" value="1">
+                    <input class="form-control" type="number" name="qtt">
                 </label>
             </p>
             <p>
@@ -33,4 +33,5 @@
         </form>
     </div>
 </div>
+
 <?php include('footer.php');?>

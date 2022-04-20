@@ -40,7 +40,7 @@
                 <a href=traitement.php?action=decrease&index='.$index.'><i class="fa-solid fa-angle-down fa-sm"></i></a>
                 </div>
                 </td>',
-                '<td class="px-2 price">'.number_format($product['total'], 2, ",","%nbsp;")."€</td>",
+                '<td class="px-2 price">'.number_format($product['total'], 2, ",","")."€</td>",
                 "<td> 
                     <a href='traitement.php?action=delete-unit&index=$index'><i class='fa-solid fa-trash'></i></i></a>
                 </td>",
@@ -67,4 +67,5 @@
         }
     ?>
 </div>
+
 <?php include('footer.php');?>

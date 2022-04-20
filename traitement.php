@@ -1,9 +1,10 @@
 <?php
     session_start();
-    // On utilise session_start pour récupérer les informations de l'utilisateur et les garder entre plusieurs pages
-    // pour les réutiliser on stock les informations dans les cookies
-    //include('recap.php');
-    // Si $_GET a reçu le mot 'action' 
+    require_once('mysql.php');
+        // On utilise session_start pour récupérer les informations de l'utilisateur et les garder entre plusieurs pages
+        // pour les réutiliser on stock les informations dans les cookies
+        //include('recap.php');
+        // Si $_GET a reçu le mot 'action' 
     if (isset($_GET['action'])){
         //On va traiter les cas différents pour "?action=.." chaque cas est le mot clé après le '='
         switch($_GET['action']){
@@ -43,16 +44,17 @@
                 '<div class="alert alert-success text-center" role="alert">
                     Le produit a bien été ajouté à la liste.
                 </div>';
+                header('Location: index.php');
         }else{
             //On attribut à $_SESSION['message'] une div si le formulaire comporte une erreur
             $_SESSION['message'] = 
                 '<div class="alert alert-danger text-center" role="alert">
                     Le formulaire comporte une erreur
                 </div>';
+                header('Location: index.php');
         }
 
         // Suite du case
-            header('Location: recap.php');
         break;
         // Le cas de ?action=delete-all
         case "delete-all":
@@ -133,6 +135,7 @@
             unset($_SESSION['message']);
             unset($_SESSION['wrong-id']);
             unset($_SESSION['error-form']);
+            unset($_SESSION['wrong-id']);
             header('Location: recap.php');
         break;
             // Lorsqu'on clique sur le logo accueil cela enlève les différents messages en session
@@ -141,6 +144,7 @@
             unset($_SESSION['message']);
             unset($_SESSION['wrong-id']);
             unset($_SESSION['error-form']);
+            unset($_SESSION['wrong-id']);
             header('Location: index.php');
         break;
             // Cas de la déconnexion
@@ -148,7 +152,25 @@
             session_destroy();
             header('Location: logout.php');
         break;  
+            // Cas de la suppression de compte
+        case "delete-account":
+            $deleteAccount = $mysqlClient->prepare("DELETE FROM `users` WHERE `email` = :email");
+            $deleteAccount->execute(
+                array(
+                    'email' => $_SESSION['email-login']
+                )
+            );
+            if ( isset($_SERVER['HTTP_COOKIE']) || isset($_SESSION['mail']) ){
+                $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
+                foreach ($cookies as $cookie) {
+                    $parts = explode('=', $cookie);
+                    $name = trim($parts[0]);
+                    setcookie($name, '', time()-1000);
+                    setcookie($name, '', time()-1000, '/');
+                }
+                unset($_SESSION);
+            }
+            header('Location: account_deleted.php');
+        break;
     }
 }else echo "Un problème est survenu";
-
-?>

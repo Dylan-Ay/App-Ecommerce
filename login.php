@@ -4,18 +4,22 @@
     $title = "Page de connexion";
     include('header.php');
 ?>
-<?php if (!isset($_SESSION['mail'])):?>
+
+<?php if (!isset($_SESSION['email-login'])):?>
+    
 <div class="container">
     <div class="row pb-5 pt-3">
         <div class="col-12 pb-5">
         <?php if (isset($_SESSION['wrong-id'])): echo $_SESSION['wrong-id']; endif;?>
             <h3 class="text-center">Nouveau client</h3>
-            <p class="py-3 px-2">
+            <div class="py-3 px-2">
                 En créant votre compte sur Sneakers vous pourrez commander sur notre site et garder un historique de celles-ci.
-            <p>
-                <a class="d-flex justify-content-center m-auto mt-3 btn btn-outline-dark align-items-center bold w-75" href="create_account.php"><i class="fa-solid fa-angle-right me-1"></i>S'inscrire</a>
-            </p>
-            </p>
+                <p>
+                    <a class="d-flex justify-content-center m-auto mt-3 btn btn-outline-dark align-items-center bold w-75" href="create_account.php">
+                        <i class="fa-solid fa-angle-right me-1"></i>S'inscrire
+                    </a>
+                </p>
+            </div>
         </div>
         <div class="col-12">
             <h3 class="text-center">Client enregistré</h3>
@@ -27,5 +31,6 @@
         </div>
     </div>
 </div>
+
 <?php else: header('Location: account.php'); endif;?>
 <?php include('footer.php');?>
