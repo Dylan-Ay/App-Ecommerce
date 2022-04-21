@@ -5,7 +5,7 @@
     include('header.php');
 ?>
 
-<?php if (isset($_SESSION['mail'])):?>
+<?php if (isset($_SESSION['email-login'])):?>
 
 <div class="container py-5">
     <p>

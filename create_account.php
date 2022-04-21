@@ -7,7 +7,8 @@
     if (!isset($_SESSION['email-login'])):
 ?>
 
-<div class="container">
+<div class="container py-5">
+    <?php if (isset($_SESSION['error-form'])): echo $_SESSION['error-form']; endif;?>
     <p class="py-3">
         <span class="bold">Important:</span> Si vous avez déjà un compte, merci de vous connecter à la page <a href="login.php"><u>d'ouverture de session</u></a>.
         <p class="text-end">
@@ -15,8 +16,6 @@
         </p>
     </p>
     
-    <?php if (isset($_SESSION['error-form'])): echo $_SESSION['error-form']; endif;?>
-        
     <h3 class="text-center pt-5">Vos données personnels</h3>
     <form action="user_create.php" class="form-group d-flex flex-column" method="post">
         <label for="firstname">Prénom <span class="red">*</span></label>
@@ -25,8 +24,8 @@
         <label class="mt-3" for="lastname">Nom <span class="red">*</span></label>
         <input class="py-2 mb-3" type="text" name="lastname" id="lastname" required>
 
-        <label for="mail">Adresse email <span class="red">*</span></label>
-        <input class="py-2" type="email" name="mail" id="mail" required>
+        <label for="email-login">Adresse email <span class="red">*</span></label>
+        <input class="py-2" type="email" name="email-login" id="email-login" required>
 
         <h3 class="text-center pt-5">Votre adresse</h3>
         <label for="adress">Adresse <span class="red">*</span></label>
@@ -58,5 +57,5 @@
     </form>
 </div>
 
-<?php else: header('Location: index.php');  endif;?>
+<?php else: header('Location: index.php'); endif;?>
 <?php include('footer.php');?>

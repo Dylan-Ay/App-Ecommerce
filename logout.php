@@ -11,8 +11,9 @@
         <p class="py-4 text-center">
             Vous avez fermé votre session. Vous pouvez laisser votre ordinateur allumé sans risque d'utilisation de votre compte.
             <br><br>
-            Votre panier en cours a été sauvegardé, ses produits vous seront proposés lors de votre prochaine ouverture de session.
+            Votre panier en cours a été sauvegardé.
         </p>
     </div>
+
 <?php else: header('Location: index.php'); endif;?>
 <?php include('footer.php');?>

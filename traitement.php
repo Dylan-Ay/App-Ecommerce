@@ -149,7 +149,7 @@
         break;
             // Cas de la déconnexion
         case "logout":
-            session_destroy();
+            unset($_SESSION['email-login']);
             header('Location: logout.php');
         break;  
             // Cas de la suppression de compte
@@ -160,7 +160,7 @@
                     'email' => $_SESSION['email-login']
                 )
             );
-            if ( isset($_SERVER['HTTP_COOKIE']) || isset($_SESSION['mail']) ){
+            if ( isset($_SERVER['HTTP_COOKIE']) || isset($_SESSION['email-login']) ){
                 $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
                 foreach ($cookies as $cookie) {
                     $parts = explode('=', $cookie);

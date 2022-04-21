@@ -5,7 +5,7 @@
     include('header.php');
 ?>
 
-<?php if (isset($_SESSION['mail'])):?>
+<?php if (!isset($_SESSION['email-login'])):?>
 
 <div class="container">
     Nous sommes navrés de vous voir partir. A tout moment vous avez la possibilité de recréer un compte.

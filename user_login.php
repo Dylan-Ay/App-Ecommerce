@@ -16,6 +16,11 @@
         else{
             $email = htmlentities(trim($_POST['email-login']));
             $password = $_POST["password-login"];
+            
+            if (isset($_SESSION['wrong-id']) || isset($_SESSION['error-form'])){
+                unset($_SESSION['wrong-id']);
+                unset($_SESSION['error-form']);
+            }
 
             // On récupère l'objet user qui correspond au mail en paramètre
             $user = $control->get_user($email);
@@ -23,6 +28,7 @@
             if (password_verify($password, $user['pswd'])){
                 $_SESSION['email-login'] = $email;
                 header('Location: account.php');
+                unset($_SESSION['wrong-id']);
             }
             else{
                 $_SESSION['wrong-id'] = 
