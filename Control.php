@@ -3,6 +3,7 @@
 class Control 
 {
     private $user;
+    private $product;
     private $mysqlClient;
 
     public function __construct($mysqlClient)
@@ -31,12 +32,18 @@ class Control
         }
     }
 
-    public function get_all_mails()
+    public function get_product()
     {
-        $request = "SELECT email FROM users";
+        $request = "SELECT * FROM products";
         $state = $this->mysqlClient->prepare($request);
-        $state->execute();
-        $allMails = $state->fetchAll();
-        return $allMails;
+        $state->execute([
+            'product_id' => 'product_id',
+            'name' => 'name',
+            'price' => 'price',
+            'picture' => 'picture'
+        ]);
+        $this->product = $state->fetch();
+        return $this->product;
     }
 }
+//header('Location: index.php');

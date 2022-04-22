@@ -1,8 +1,23 @@
-/*The designs were created to the following widths:
+.primary-color {
+  color: #ff7d1a;
+}
 
-- Mobile: 375px
-- Desktop: 1440px
-*/
+.second-primary-color {
+  color: #ffede0;
+}
+
+.very-dark-blue {
+  color: #1d2025;
+}
+
+.dark-grayish-blue {
+  color: #68707d;
+}
+
+.light-grayish-blue {
+  color: #f7f8fd;
+}
+
 body {
   font-family: "Kumbh Sans", sans-serif;
   margin: 0;
@@ -33,6 +48,16 @@ td {
 
 .red {
   color: red;
+}
+
+.no-arrow::-webkit-inner-spin-button {
+  display: none;
+}
+
+.no-arrow::-webkit-outer-spin-button,
+.no-arrow::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 header h1 {
@@ -119,5 +144,74 @@ header .nav-link {
 #recap .arrow-container a:hover {
   background-color: rgba(255, 255, 255, 0.5);
   color: black;
+}
+
+#product #price {
+  font-size: 24px;
+}
+
+#product form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#product form input {
+  padding: 14px 0;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+#product form input[type=number] {
+  background-color: #f7f8fd;
+  cursor: unset;
+}
+
+#product form input[type=submit] {
+  background-color: #ff7d1a;
+  color: white;
+}
+
+#product form .container-qtt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+#product form .container-qtt img {
+  position: absolute;
+  cursor: pointer;
+  width: 15px;
+}
+
+#product form .container-qtt #minus {
+  top: 50%;
+  left: 20px;
+}
+
+#product form .container-qtt #plus {
+  right: 20px;
+  top: 39%;
+}
+
+#product form .container-add-cart {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#product form .container-add-cart img {
+  position: absolute;
+  width: 20px;
+  left: 28%;
 }
 /*# sourceMappingURL=style.css.map */

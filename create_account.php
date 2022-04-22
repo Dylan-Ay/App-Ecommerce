@@ -16,7 +16,7 @@
         </p>
     </p>
     
-    <h3 class="text-center pt-5">Vos données personnels</h3>
+    <h3 class="text-center pt-5">Vos données personnelles</h3>
     <form action="user_create.php" class="form-group d-flex flex-column" method="post">
         <label for="firstname">Prénom <span class="red">*</span></label>
         <input class="py-2" type="text" name="firstname" id="firstname" required>

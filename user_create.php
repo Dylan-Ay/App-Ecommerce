@@ -6,20 +6,18 @@
 
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
+        // On récupèré le mail en $_POST ensuite on appelle la méthode get_user avec ce mail récupéré. 
         $mail = $_POST['email-login'];
-            $dataBaseMails = $control->get_all_mails();
-            foreach ($dataBaseMails as $allMails) {
-                foreach ($allMails as $mailDataBase) {
-                }
-            }
-
-            if ($mailDataBase === $mail){
-                $_SESSION['error-form'] = 
-                    '<div class="alert alert-danger text-center" role="alert">
-                        Un compte a déjà été crée avec cette adresse email. Veuillez vous connecter avec cette adresse email ou créer un compte avec une adresse différente.
-                    </div>';
-                header('Location: create_account.php');
-            }
+        $mailDataBase = $control->get_user($mail);
+        
+        //Si le mail récupéré est égal à un mail de la table user de la colonne 'email' alors on renvoi une erreur.
+        if ($mail === $mailDataBase['email']){
+            $_SESSION['error-form'] = 
+                '<div class="alert alert-danger text-center" role="alert">
+                    Un compte a déjà été crée avec cette adresse email. Veuillez vous connecter avec cette adresse email ou créer un compte avec une adresse différente.
+                </div>';
+            header('Location: create_account.php');
+        }
 
         else if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email-login']) && filter_var($_POST['email-login'], FILTER_VALIDATE_EMAIL)  && !empty($_POST['adress']) && !empty($_POST['city']) && !empty($_POST['zip']) && !empty($_POST['country']) && !empty($_POST['dpt']) && !empty($_POST['phone']) && !empty($_POST['pswd']) && !empty($_POST['pswd-confirmation']) && $_POST['pswd'] === $_POST['pswd-confirmation']){
             

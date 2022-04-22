@@ -13,24 +13,24 @@
 
         //On vérifie si le serveur a reçu une clé submit pour éviter qu'un utiliseur puisse atteindre traitement.php
         // d'une autre manière
-        if (isset($_POST['submit']) && !empty($_POST['name']) && !empty($_POST['price']) && !empty($_POST['qtt'])){
+        if (isset($_POST['submit']) && !empty($_POST['qtt'])){
             // On filtre l'input name avec filter_sanitize_spcial_chars pour ne pas récupérer du html au cas où il y en aurait
-            $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
+            //$name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
             // On filtre price avec filter validate float pour être sûr qu'on reçoit un nombre à virgule pour exclure le texte
             // Filter flag permet l'utilisation de ',' ou '.' pour insérer un nombre décimal
-            $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+            //$price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
             // On filtre 'qtt' avec filter_validate_int pour y recevoir uniquement un nombre entier
             $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT);
 
-
+            
             // Si les conditions sont vraies (si les valeurs contiennent ce qu'on attend)
             // Alors on ajoute le contenu de chaque champ dans un tableau pour ensuite les conserver en SESSION
             if ($name && $price && $qtt){
                 $product = array(
                     'name' => $name,
                     'price' => $price,
-                    'qtt' => $qtt,
-                    'total' => $price * $qtt 
+                    'qtt' => $qtt
+                    //'total' => $price * $qtt 
                 );
             //On ajoute le produit au tableau de la SESSION
             //On crée la clé 'products' à la SESSION
@@ -104,7 +104,7 @@
             if (isset($_GET['index'])){
                 $index = $_GET['index'];
                 //Si un index existe, et si la quantité est supérieur à 0 et si le total est supérieur à 0 Alors on décrémente la quantité de 1 et on soustrait le prix au total à chaque clique
-                if (isset($_SESSION['products'][$index]) && $_SESSION['products'][$index]['qtt'] > 1 && $_SESSION['products'][$index]['total'] > 1){
+                if (isset($_SESSION['products'][$index]) && $_SESSION['products'][$index]['qtt'] > 1 && $_SESSION['products']/*[$index]['total']*/ > 1){
                     $_SESSION['products'][$index]['qtt'] = $_SESSION['products'][$index]['qtt'] - 1;
                     $_SESSION['products'][$index]['total'] -= $_SESSION['products'][$index]['price'];
                     unset($_SESSION['message']);

@@ -71,6 +71,8 @@
                 </div>   
             </div>
         </nav>
-        <h1 class="text-center py-5 mx-3"><?= $h1?></h1>
+        <?php if (isset($h1)):?>
+            <h1 class="text-center py-5 mx-3"><?= $h1?></h1>
+        <?php endif;?>
     </header>
     <main>

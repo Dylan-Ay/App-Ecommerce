@@ -17,23 +17,40 @@ $light-weight: 400;
 $half-weight: 500;
 $bold-weight: 700;
 
-/*The designs were created to the following widths:
+//Colors Class
+.primary-color{
+    color: $primary-color;
+}
+.second-primary-color{
+    color: $second-primary-color;
+}
+.very-dark-blue{
+    color: $very-dark-blue;
+}
+.dark-grayish-blue{
+    color: $dark-grayish-blue;
+}
+.light-grayish-blue{
+    color: $light-grayish-blue;
+}
 
-- Mobile: 375px
-- Desktop: 1440px
-*/
+//Button properties
+@mixin product-btn{
+    padding: 14px 0;
+    border-radius: 10px;
+    font-weight: $bold-weight;
+}
 
+// Generals settings
 body{
     font-family: $font;
     margin: 0;
     box-sizing: border-box;
 }
-
 a{
     color: $black;
     text-decoration: none;
 }
-
 td{
     border-bottom: unset;
 }
@@ -48,6 +65,15 @@ td{
 }
 .red{
     color: red;
+}
+.no-arrow::-webkit-inner-spin-button {
+    display: none;
+}
+  
+.no-arrow::-webkit-outer-spin-button,
+.no-arrow::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 //HEADER
@@ -121,6 +147,54 @@ header{
             &:hover{
                 background-color: rgba(255, 255, 255, 0.50);
                 color: black;
+            }
+        }
+    }
+}
+
+#product{
+    #price{
+        font-size: 24px;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        & input{
+            @include product-btn();
+        }
+        & input[type=number]{
+            background-color: $light-grayish-blue;
+            cursor: unset;
+        }
+        & input[type=submit]{
+            background-color: $primary-color;
+            color: white;
+        }
+        .container-qtt{
+            display: flex;
+            position: relative;
+            & img{
+                position: absolute;
+                cursor: pointer;
+                width: 15px;
+            }
+            #minus {
+                top: 50%;
+                left: 20px;
+            }
+            #plus{
+                right: 20px;
+                top: 39%;
+            }
+        }
+        .container-add-cart{
+            position: relative;
+            display: flex;
+            align-items: center;
+            & img{
+                position: absolute;
+                width: 20px;
+                left: 28%;
             }
         }
     }
