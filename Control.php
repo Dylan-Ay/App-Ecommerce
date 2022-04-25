@@ -3,7 +3,9 @@
 class Control 
 {
     private $user;
+    private $allProducts;
     private $product;
+    private $fourLastProducts;
     private $mysqlClient;
 
     public function __construct($mysqlClient)
@@ -32,18 +34,47 @@ class Control
         }
     }
 
-    public function get_product()
-    {
-        $request = "SELECT * FROM products";
+     public function get_product()
+     {
+        $request = "SELECT * FROM products WHERE product_id = ?";
         $state = $this->mysqlClient->prepare($request);
-        $state->execute([
-            'product_id' => 'product_id',
-            'name' => 'name',
-            'price' => 'price',
-            'picture' => 'picture'
-        ]);
+        $state->execute([$_GET['product_id']]);
         $this->product = $state->fetch();
         return $this->product;
+     }
+
+     public function get_product_cart()
+     {
+        $request = "SELECT * FROM products WHERE product_id = ?";
+        $state = $this->mysqlClient->prepare($request);
+        $state->execute([$_POST['product_id']]);
+        $this->product = $state->fetch();
+        return $this->product;
+     }
+
+    public function get_number_of_products()
+    {
+        $request = "SELECT * FROM products";
+        $numberOfProducts = $this->mysqlClient->query($request)->rowCount();
+        return $numberOfProducts;
     }
+
+    public function get_all_products()
+    {
+        $request = "SELECT * FROM products ORDER BY date_added DESC LIMIT 12";
+        $state = $this->mysqlClient->prepare($request);
+        $state->execute();
+        $this->allProducts = $state->fetchAll();
+        return $this->allProducts;
+    }
+    
+    public function get_four_last_products()
+    {
+        $request = "SELECT * FROM products ORDER BY date_added DESC LIMIT 4";
+        $state = $this->mysqlClient->prepare($request);
+        $state->execute();
+        $this->fourLastProducts = $state->fetchAll();
+        return $this->fourLastProducts;
+    }
+
 }
-//header('Location: index.php');

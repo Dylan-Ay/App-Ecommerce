@@ -1,6 +1,8 @@
 <?php
     session_start();
     require_once('mysql.php');
+    require_once('Control.php');
+    $control = new Control($mysqlClient);
         // On utilise session_start pour récupérer les informations de l'utilisateur et les garder entre plusieurs pages
         // pour les réutiliser on stock les informations dans les cookies
         //include('recap.php');
@@ -13,45 +15,62 @@
 
         //On vérifie si le serveur a reçu une clé submit pour éviter qu'un utiliseur puisse atteindre traitement.php
         // d'une autre manière
-        if (isset($_POST['submit']) && !empty($_POST['qtt'])){
-            // On filtre l'input name avec filter_sanitize_spcial_chars pour ne pas récupérer du html au cas où il y en aurait
-            //$name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
-            // On filtre price avec filter validate float pour être sûr qu'on reçoit un nombre à virgule pour exclure le texte
-            // Filter flag permet l'utilisation de ',' ou '.' pour insérer un nombre décimal
-            //$price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-            // On filtre 'qtt' avec filter_validate_int pour y recevoir uniquement un nombre entier
-            $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT);
-
+        if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['product_id']) && is_numeric($_POST['quantity'])){
+            $product_id = (int)$_POST['product_id'];
+            $quantity = (int)$_POST['quantity'];
             
-            // Si les conditions sont vraies (si les valeurs contiennent ce qu'on attend)
-            // Alors on ajoute le contenu de chaque champ dans un tableau pour ensuite les conserver en SESSION
-            if ($name && $price && $qtt){
-                $product = array(
-                    'name' => $name,
-                    'price' => $price,
-                    'qtt' => $qtt
-                    //'total' => $price * $qtt 
+            $product = $control->get_product_cart();
+
+            // Si les conditions sont vraies ($product_id && $quantity)
+            // Alors on ajoute le contenu de chaque champ dans $productInSession
+            if ($product_id && $quantity){
+                $productInSession = array(
+                    $product_id => $product_id, //l'ID venant du $_POST['product_id']
+                    'picture' => $product['picture'],
+                    'name' => $product['name'],
+                    'price' => $product['price'],
+                    'quantity' => $quantity,
+                    'total' => $product['price'] * $quantity //Quantité venant du $_POST['quantity']
                 );
-            //On ajoute le produit au tableau de la SESSION
-            //On crée la clé 'products' à la SESSION
-            //Les doubles crochets indiquent que nous ajoutons une nouvelle entrée au futur tableau 'products'
-            //Associé à la clé 'products'
-                $_SESSION['products'][] = $product;
-                unset($_SESSION['delete']);
+                if (isset($_SESSION['products']) && is_array($_SESSION['products'])) {
+                    foreach ($_SESSION['products'] as $index => $value) {
+                        // Je boucle dans $_SESSION['products'] pour récupérer la clé qui existe pour chaque entrée
+                    }
+                    if (array_key_exists($product_id, $_SESSION['products'][$index])) {
+                        // Si le produit existe, j'ajoute la quantité de $_POST['quantity']
+                        $_SESSION['products'][$index]['quantity'] += $quantity;
+                        unset($_SESSION['delete']);
+                       } else {
+                        // Si le produit n'existe pas, je l'ajoute à $_SESSION['products']
+                        $_SESSION['products'] [] = $productInSession;
+                        unset($_SESSION['delete']);
+                       }
+                   } else {
+                       // Sinon Si $_SESSION['products'] est n'existe pas je lui ajoute le produit
+                       $_SESSION['products'] [] = $productInSession;
+                       unset($_SESSION['delete']);
+                }
+                 
+                
+                //On ajoute le produit au tableau de la SESSION
+                //On crée la clé 'products' à la SESSION
+                //Les doubles crochets indiquent que nous ajoutons une nouvelle entrée au futur tableau 'products'
+                //Associé à la clé 'products'
+                
             }
             //On attribut à $_SESSION['message'] une div si le produit a bien été ajouté
                 $_SESSION['message'] = 
                 '<div class="alert alert-success text-center" role="alert">
                     Le produit a bien été ajouté à la liste.
                 </div>';
-                header('Location: index.php');
+                header('Location: index.php?page=product&product_id=5'); 
         }else{
             //On attribut à $_SESSION['message'] une div si le formulaire comporte une erreur
             $_SESSION['message'] = 
                 '<div class="alert alert-danger text-center" role="alert">
                     Le formulaire comporte une erreur
                 </div>';
-                header('Location: index.php');
+                header('Location: index.php?page=product&product_id=5'); 
         }
 
         // Suite du case
@@ -61,7 +80,7 @@
             //On unset toutes les valeurs du tableau $_SESSION['products'] et on redirige vers recap.php
             unset($_SESSION['products']);
             unset($_SESSION['message']);
-            header('Location: recap.php');
+            header('Location: index.php?page=cart.php');
         break;
             // Le cas de ?action=delete-unit
         case "delete-unit":
@@ -80,8 +99,8 @@
                 }else{
                     echo "Erreur";
                 }
-                header("Location: recap.php");
             }
+            header("Location: index.php?page=cart"); 
         break;
             // Le cas de ?action=increase
         case "increase":
@@ -173,4 +192,17 @@
             header('Location: account_deleted.php');
         break;
     }
-}else echo "Un problème est survenu";
+}else 
+
+var_dump($_SESSION['products']);
+$product_id = 5;
+$quantity = 10;
+
+if (isset($_SESSION['products']) && is_array($_SESSION['products'])) {
+    if (array_key_exists($product_id, $_SESSION['products'])) {
+        // Product exists in cart so just update the quanity
+        echo "existe";
+       } else {
+        echo 'existe pas';
+       }
+}

@@ -7,10 +7,10 @@ function increaseQtt(){
 }
 
 function decreaseQtt(){
-    if (inputValue.value > 0){
-        return inputValue.value--;
+    if (inputValue.value <= 1){
+        return inputValue.value = 1;
     }else{
-        return inputValue.value = 0;
+        inputValue.value--;
     }
 }
 

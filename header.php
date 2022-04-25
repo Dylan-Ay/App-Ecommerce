@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col">
                         <figure>
-                            <a href="traitement.php?action=unset-panier">
+                            <a href="index.php?page=cart">
                                 <img src="images/icon-cart-1.svg" alt="Icon panier">
                             </a>
                             <figcaption>
@@ -53,7 +53,7 @@
                             <a class="nav-link" href="index.php">Accueil</a>
                         </li>
                         <li class="nav-item mx-lg-5">
-                            <a class="nav-link" href="#">Collections</a>
+                            <a class="nav-link" href="index.php?page=products">Products</a>
                         </li>
                         <li class="nav-item mx-lg-5">
                             <a class="nav-link" href="#">Men</a>

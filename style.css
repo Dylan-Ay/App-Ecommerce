@@ -60,6 +60,10 @@ td {
   margin: 0;
 }
 
+.border-bottom-title {
+  border-bottom: 1px solid #eee;
+}
+
 header h1 {
   border-bottom: 1px solid #eee;
 }
@@ -150,6 +154,10 @@ header .nav-link {
   font-size: 24px;
 }
 
+#product .description {
+  text-align: justify;
+}
+
 #product form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -213,5 +221,52 @@ header .nav-link {
   position: absolute;
   width: 20px;
   left: 28%;
+}
+
+#cart .name {
+  height: 238px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#cart .name a {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+#cart .price, #cart .quantity, #cart .total-price {
+  height: 222px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#cart img {
+  width: 165px;
+}
+
+#cart .quantity-input-container {
+  width: 95px;
+  margin: auto;
+}
+
+#cart .form-control:disabled, #cart .form-control[readonly] {
+  background-color: white;
+}
+
+#cart .arrow-container {
+  background-color: black;
+  width: 23px;
+}
+
+#cart .arrow-container a {
+  text-align: center;
+  color: white;
+}
+
+#cart .arrow-container a:hover {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 /*# sourceMappingURL=style.css.map */
