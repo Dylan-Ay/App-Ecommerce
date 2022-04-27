@@ -9,9 +9,9 @@
     
 <div class="container">
     <div class="row pb-5 pt-3">
-        <div class="col-12 pb-5">
+        <div class="col-12 pb-5 text-center">
         <?php if (isset($_SESSION['wrong-id'])): echo $_SESSION['wrong-id']; endif;?>
-            <h3 class="text-center">Nouveau client</h3>
+            <h3>Nouveau client</h3>
             <div class="py-3 px-2">
                 En créant votre compte sur Sneakers vous pourrez commander sur notre site et garder un historique de celles-ci.
                 <p>

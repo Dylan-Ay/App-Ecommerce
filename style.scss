@@ -156,6 +156,11 @@ header{
 }
 
 #product{
+    .img-fluid {
+        @media screen and (max-width: 992px) {
+            max-width: 70%;
+        }
+    }
     #price{
         font-size: 24px;
     }
@@ -207,7 +212,6 @@ header{
 }
 
 #cart{
-    
     .name{
         height: 238px;
         align-items: center;

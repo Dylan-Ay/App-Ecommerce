@@ -41,7 +41,7 @@
                     <td>
                         <div class="quantity d-flex">
                             <div class="quantity-input-container d-flex">
-                                <input disabled class="form-control qtt" type="text" name="qtt" value="<?=$products[$index]['quantity']?>">
+                                <input disabled class="form-control qtt" type="text" name="qtt" value="<?=$products[$index]['quantity']?>" max="<?=$product['max-quantity']?>">
                                 <div class="arrow-container d-flex flex-column">
                                     <a href="traitement.php?action=increase&index=<?=$index?>"><i class="fa-solid fa-angle-up fa-sm"></i></a>
                                     <a href="traitement.php?action=decrease&index=<?=$index?>"><i class="fa-solid fa-angle-down fa-sm"></i></a>
@@ -58,26 +58,32 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <div class="totals text-end ">
-            <span class="text bold">Sous-Total :
-                <?php 
-                    $subTotal = 0;
-                    foreach ($products as $index => $value) {
-                        $subTotal += $products[$index]['total'];
-                    }
-                ?>
-            </span>
-            <?=number_format($subTotal, 2, ",","") ?>&euro;
-            <p> 
-                <span class="text bold">Total :</span> 
-                <?php 
-                    $subTotal = 0;
-                    foreach ($products as $index => $value) {
-                        $subTotal += $products[$index]['total'];
-                    }
-                ?>
-            <?=number_format($subTotal, 2, ",","") ?>&euro;
-            </p>
+        <div class="row justify-content-end">
+            <div class="totals col-4 col-md-3 col-xl-2">
+                <p class="mb-0">
+                    <span class="text bold">Livraison :</span>
+                        <?= $shippingCost = 15;?>€
+                </p>
+                <span class="text bold">Sous-Total :
+                    <?php 
+                        $subTotal = 0;
+                        foreach ($products as $index => $value) {
+                            $subTotal += $products[$index]['quantity'] * $products[$index]['price'] + $shippingCost;
+                        }
+                    ?>
+                </span>
+                <?=number_format($subTotal, 2, ",","") ?>&euro;
+                <p> 
+                    <span class="text bold">Total :</span> 
+                    <?php 
+                        $total = 0;
+                        foreach ($products as $index => $value) {
+                            $total += $subTotal;
+                        }
+                    ?>
+                <?=number_format($subTotal, 2, ",","") ?>&euro;
+                </p>
+            </div>
         </div>
         <div class="row buttons d-flex flex-column flex-md-row justify-content-evenly py-3">
             <!-- <input type="submit" value="Update" name="update">
@@ -93,4 +99,6 @@
     <?php endif;?>
 </section>
 
-<!-- <?php var_dump($_SESSION['products'])?> -->
+<?php var_dump($_SESSION['products'])?>
+
+<?php if (isset($_SESSION['test'])): echo "test"; endif;?>

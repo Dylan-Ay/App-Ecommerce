@@ -24,10 +24,32 @@
                         <a class="navbar-brand" href="traitement.php?action=unset-accueil">Sneakers</a>
                     </div>
                 </div>
-                <div class="row">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav justify-content-evenly w-100 align-items-center py-4">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.php">Accueil</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="index.php?page=products">Products</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">Men</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">Women</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row flex-nowrap">
                     <div class="col">
                         <figure>
-                            <a href="index.php?page=cart">
+                            <a href="traitement.php?action=unset-panier">
                                 <img src="images/icon-cart-1.svg" alt="Icon panier">
                             </a>
                             <figcaption>
@@ -40,36 +62,14 @@
                                 ?>
                             </figcaption>
                         </figure>
-                    </div>
+                        </div>
                     <div class="col d-flex align-items-end">
                         <a href="login.php">
                             <i class="fa-regular fa-circle-user"></i>
                         </a>
                     </div>
                 </div>
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav justify-content-center align-items-center py-4">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.php">Accueil</a>
-                        </li>
-                        <li class="nav-item mx-lg-5">
-                            <a class="nav-link" href="index.php?page=products">Products</a>
-                        </li>
-                        <li class="nav-item mx-lg-5">
-                            <a class="nav-link" href="#">Men</a>
-                        </li>
-                        <li class="nav-item mx-lg-5">
-                            <a class="nav-link" href="#">Women</a>
-                        </li>
-                        <li class="nav-item mx-lg-5">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item mx-lg-5">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
-                    </ul>
-                </div>   
-            </div>
+            </div>   
         </nav>
         <?php if (isset($h1)):?>
             <h1 class="text-center py-5 mx-3"><?= $h1?></h1>

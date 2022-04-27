@@ -16,3 +16,5 @@ function decreaseQtt(){
 
 plusBtn.addEventListener("click", increaseQtt);
 minusBtn.addEventListener("click", decreaseQtt);
+
+// Si la valeur de l'input est égale à la valeur max de l'input ( sachant qu'on peut aussi la changer)

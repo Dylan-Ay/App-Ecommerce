@@ -150,6 +150,12 @@ header .nav-link {
   color: black;
 }
 
+@media screen and (max-width: 992px) {
+  #product .img-fluid {
+    max-width: 70%;
+  }
+}
+
 #product #price {
   font-size: 24px;
 }

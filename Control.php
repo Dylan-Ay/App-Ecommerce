@@ -33,32 +33,32 @@ class Control
             echo $e->getMessage();
         }
     }
-
-     public function get_product()
-     {
+    // Méthode pour afficher dynamiquement chaque produit en fonction de son ID récupéré en $_GET dans la page product.php
+    public function get_product()
+    {
         $request = "SELECT * FROM products WHERE product_id = ?";
         $state = $this->mysqlClient->prepare($request);
         $state->execute([$_GET['product_id']]);
         $this->product = $state->fetch();
         return $this->product;
-     }
-
-     public function get_product_cart()
-     {
+    }
+    // Méthode pour récupérer le produit ajouté au panier, et on affiche le produit dans le panier dont l'ID est celui envoyé dans le $_POST qui est hidden
+    public function get_product_cart()
+    {
         $request = "SELECT * FROM products WHERE product_id = ?";
         $state = $this->mysqlClient->prepare($request);
         $state->execute([$_POST['product_id']]);
         $this->product = $state->fetch();
         return $this->product;
-     }
-
+    }
+    // Méthode pour récupérer le nombre de produits qui se trouve en base de données
     public function get_number_of_products()
     {
         $request = "SELECT * FROM products";
         $numberOfProducts = $this->mysqlClient->query($request)->rowCount();
         return $numberOfProducts;
     }
-
+    // Méthode pour récupérer les 12 derniers produits ajoutés en base de données, classé par date du plus récent.
     public function get_all_products()
     {
         $request = "SELECT * FROM products ORDER BY date_added DESC LIMIT 12";
@@ -67,7 +67,7 @@ class Control
         $this->allProducts = $state->fetchAll();
         return $this->allProducts;
     }
-    
+    // Méthode pour récupérer les 4 derniers produits ajoutés en base de données, classé par date du plus récent.
     public function get_four_last_products()
     {
         $request = "SELECT * FROM products ORDER BY date_added DESC LIMIT 4";
@@ -76,5 +76,4 @@ class Control
         $this->fourLastProducts = $state->fetchAll();
         return $this->fourLastProducts;
     }
-
 }

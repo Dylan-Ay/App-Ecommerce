@@ -111,7 +111,4 @@
         }
         else{
             header('Location: create_account.php');
-        }
-
-
-                
+        }       

@@ -15,7 +15,7 @@
 ?>
 <section id="product">
     <div class="container py-3">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12 col-lg-6 d-flex justify-content-center">
                 <img src="<?=$product['picture']?>" class="img-fluid" alt="<?=$product['name']?>">
             </div>
@@ -47,3 +47,4 @@
 </section>
 
 <?php include('footer.php');?>
+<?php var_dump($_SESSION['products'])?>
