@@ -26,6 +26,13 @@ class Control
             $state->execute();
             // On récupère le mail de l'user
             $this->user = $state->fetch();
+
+            // On défini en cookie le prénom et nom du user
+            $firstName = $this->user['firstname'];
+            $lastName = $this->user['lastname'];
+            setcookie('firstname', $firstName);
+            setcookie('lastname', $lastName);
+            
             // On rétourne le mail récupéré du user
             return $this->user;
         }

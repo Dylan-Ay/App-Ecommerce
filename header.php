@@ -63,9 +63,10 @@
                             </figcaption>
                         </figure>
                         </div>
-                    <div class="col d-flex align-items-end">
+                    <div class="col d-flex align-items-end user-content">
                         <a href="login.php">
                             <i class="fa-regular fa-circle-user"></i>
+                            <?php if (isset($_COOKIE['firstname'])): echo "<span class='ms-2'>" .$_COOKIE['firstname']."</span>"; endif;?>
                         </a>
                     </div>
                 </div>

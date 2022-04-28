@@ -5,7 +5,10 @@
     $control = new Control($mysqlClient);
 
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
-
+        if (!empty($_POST['website'])){
+            header('Location: create_account.php');
+            exit();
+        }
         // On récupèré le mail en $_POST ensuite on appelle la méthode get_user avec ce mail récupéré. 
         $mail = $_POST['email-login'];
         $mailDataBase = $control->get_user($mail);
@@ -14,13 +17,13 @@
         if ($mail === $mailDataBase['email']){
             $_SESSION['error-form'] = 
                 '<div class="alert alert-danger text-center" role="alert">
-                    Un compte a déjà été crée avec cette adresse email. Veuillez vous connecter avec cette adresse email ou créer un compte avec une adresse différente.
+                    Un compte a déjà été crée avec cette adresse email. Veuillez vous <a href="login.php" class="bold">connecter</a> avec cette adresse email ou créer un compte avec une adresse différente.
                 </div>';
             header('Location: create_account.php');
         }
 
         else if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email-login']) && filter_var($_POST['email-login'], FILTER_VALIDATE_EMAIL)  && !empty($_POST['adress']) && !empty($_POST['city']) && !empty($_POST['zip']) && !empty($_POST['country']) && !empty($_POST['dpt']) && !empty($_POST['phone']) && !empty($_POST['pswd']) && !empty($_POST['pswd-confirmation']) && $_POST['pswd'] === $_POST['pswd-confirmation']){
-            
+            header('Location: account_success.php');
             setcookie('firstname', $_POST['firstname']);
             $firstName = htmlspecialchars(trim($_POST['firstname']));
 

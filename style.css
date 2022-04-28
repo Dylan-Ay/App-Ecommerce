@@ -115,6 +115,10 @@ header .nav-link {
   color: black;
 }
 
+header .user-content a {
+  width: 100px;
+}
+
 #recap .btn {
   width: 200px;
 }

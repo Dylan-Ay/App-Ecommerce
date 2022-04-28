@@ -4,7 +4,7 @@
     require_once('Control.php');
     // On crée une instance de Control en utilisant l'objet PDO de mysql.php
     $control = new Control($mysqlClient);
-
+    header('Location: index.php');
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
         
         if ( empty($_POST["email-login"] || empty($_POST["password-login"])) ){
@@ -12,6 +12,10 @@
             '<div class="alert alert-danger text-center" role="alert">
                 Veuillez remplir les champs du formulaire.
             </div>';
+        }
+        if (!empty($_POST['website'])){
+            header('Location: login.php');
+            exit();
         }
         else{
             $email = htmlentities(trim($_POST['email-login']));
@@ -27,6 +31,7 @@
             // On vérifie que le password reçu en $_POST corresponde au password de l'user récupéré
             if (password_verify($password, $user['pswd'])){
                 $_SESSION['email-login'] = $email;
+                
                 header('Location: account.php');
                 unset($_SESSION['wrong-id']);
             }

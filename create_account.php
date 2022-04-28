@@ -52,7 +52,7 @@
 
         <label class="mt-3" for="pswd-confirmation">Confirmez votre mot de passe <span class="red">*</span></label>
         <input class="py-2 mb-4" type="password" name="pswd-confirmation" id="pswd-confirmation" >
-
+        <input type="text" id="website" name="website" hidden>
         <input class="btn btn-dark w-50 m-auto" type="submit" value="Créer mon compte">
     </form>
 </div>

@@ -79,6 +79,7 @@ td{
     border-bottom: 1px solid #eee;
 }
 
+
 //HEADER
 
 header{
@@ -119,6 +120,11 @@ header{
     }
     & .nav-link{
         color: $black;
+    }
+    .user-content{
+        & a{
+            width: 100px;
+        }
     }
 }
 

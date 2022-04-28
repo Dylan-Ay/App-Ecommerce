@@ -224,6 +224,8 @@ if (isset($_GET['action'])){
         // Cas de la déconnexion
         case "logout":
             unset($_SESSION['email-login']);
+            setcookie('firstname', '', time()-1000);
+            setcookie('lastname', '', time()-1000);
             header('Location: logout.php');
             break;  
             

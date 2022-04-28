@@ -7,7 +7,9 @@
 
 <?php if (isset($_SESSION['email-login'])):;?>
 
-<h3 class="text-center pt-3">Bienvenue sur votre compte <span class="bold"><!--<//?= $_SESSION['firstname'] ." ". $_SESSION['lastname']."."?>--></span></h3> 
+<h3 class="text-center pt-3">Bienvenue sur votre compte
+    <span class="bold"><?= $_COOKIE['firstname'] ." ". $_COOKIE['lastname']."."?></span>
+</h3> 
 <div class="container py-4">
     <section id="account-delete">
         <a class="d-flex justify-content-center m-auto mt-3 py-2 btn btn-outline-dark align-items-center bold w-100" href="order_list.php"><i class="fa-solid fa-angle-right me-1"></i>Afficher mes commandes.</a>
