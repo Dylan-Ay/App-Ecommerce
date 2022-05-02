@@ -1,9 +1,13 @@
 <?php
     if (isset($_GET['product_id'])) {
-
-        //On récupère le produit dont le $_GET['product_id'] est égal à l'ID dans la base de donnée
         $product = $control->get_product();
-
+        $product_sizes = $control->get_product_sizes();
+        //var_dump($product_sizes);
+        foreach ($product_sizes as $key => $value) {
+            
+            $sizes [] = $product_sizes[$key]['size'];
+        }
+        //On récupère le produit dont le $_GET['product_id'] est égal à l'ID dans la base de donnée
         if (!$product) {
                 // Si l'ID du produit n'éxiste pas
                 exit("<p class='text-center display-1 pt-5'>Le produit n'éxiste pas !</p>");
@@ -26,11 +30,25 @@
                     <?=$product['price']?>&euro;
                 </span>
                 <form action="traitement.php?action=add" class="align-items-center py-3" method="post">
-                    <div class="container-qtt w-75">
-                        <img src="images/icon-minus.svg" id="minus" alt="minus icon">
-                        <img src="images/icon-plus.svg" id="plus" alt="minus icon">
-                        <input  class="btn w-100 no-arrow" type="number" name="quantity" id="qtt" 
-                        value="1" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
+                    <div class="input-container d-flex w-75 justify-content-evenly text-center">
+                        <div class="select-container">
+                            <label for="size">Taille</label>
+                            <select class ="w-100 btn mt-2" name="size" id="size" required>
+                                <?php foreach ($sizes as $key => $value): ?>
+                                    <option value="<?= $value ?>" <?= (isset($_POST['size']) && $_POST['size'] == $value) ? 'selected' : ''?>><?= $value ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <!-- Le selected ne fonctionne à cause de la redirection -->
+                        </div>
+                        <div class="quantity-container">
+                            <label for="qtt">Quantité</label>
+                            <div class="container-qtt">
+                                <img src="images/icon-minus.svg" id="minus" alt="minus icon">
+                                <img src="images/icon-plus.svg" id="plus" alt="minus icon">
+                                <input  class="btn w-100 no-arrow mt-2" type="number" name="quantity" id="qtt" 
+                                value="1" min="1" placeholder="Quantity" required>
+                            </div>
+                        </div>
                         <input type="hidden" name="product_id" value="<?= $product['product_id']?>">
                     </div>
                     <figure class="container-add-cart w-75">
@@ -47,4 +65,4 @@
 </section>
 
 <?php include('footer.php');?>
-<?php var_dump($_SESSION['products'])?>
+<!-- <?php var_dump($_SESSION['products'])?> -->

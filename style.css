@@ -26,7 +26,7 @@ body {
 }
 
 a {
-  color: black;
+  color: #222;
   text-decoration: none;
 }
 
@@ -40,6 +40,10 @@ td {
 
 .half-bold {
   font-weight: 500;
+}
+
+.almost-bold {
+  font-weight: 600;
 }
 
 .light {
@@ -112,7 +116,7 @@ header .active {
 }
 
 header .nav-link {
-  color: black;
+  color: #222;
 }
 
 header .user-content a {
@@ -182,6 +186,7 @@ header .user-content a {
   padding: 14px 0;
   border-radius: 10px;
   font-weight: 700;
+  background-color: #f7f8fd;
 }
 
 #product form input[type=number] {
@@ -192,6 +197,17 @@ header .user-content a {
 #product form input[type=submit] {
   background-color: #ff7d1a;
   color: white;
+}
+
+#product form select {
+  padding: 14px 0;
+  border-radius: 10px;
+  font-weight: 700;
+  background-color: #f7f8fd;
+}
+
+#product form .quantity-container, #product form .select-container {
+  width: 30%;
 }
 
 #product form .container-qtt {
@@ -233,17 +249,18 @@ header .user-content a {
   left: 28%;
 }
 
-#cart .name {
-  height: 238px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 #cart .name a {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+#cart .detail-container {
+  padding-top: 99px;
+}
+
+#cart .detail-container span {
+  font-style: italic;
 }
 
 #cart .price, #cart .quantity, #cart .total-price {
@@ -253,8 +270,12 @@ header .user-content a {
           align-items: center;
 }
 
-#cart img {
+#cart .table-img {
   width: 165px;
+}
+
+#cart .last-seen-img {
+  width: 80%;
 }
 
 #cart .quantity-input-container {
@@ -266,8 +287,16 @@ header .user-content a {
   background-color: white;
 }
 
+#cart .fa-trash {
+  color: #222;
+}
+
+#cart .fa-trash:hover {
+  color: #0a58ca;
+}
+
 #cart .arrow-container {
-  background-color: black;
+  background-color: #222;
   width: 23px;
 }
 

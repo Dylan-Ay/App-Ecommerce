@@ -40,7 +40,7 @@ class Control
             echo $e->getMessage();
         }
     }
-    // Méthode pour afficher dynamiquement chaque produit en fonction de son ID récupéré en $_GET dans la page product.php
+    // Méthode pour afficher dynamiquement chaque produit en fonction de son ID récupéré en $_GET pour product.php
     public function get_product()
     {
         $request = "SELECT * FROM products WHERE product_id = ?";
@@ -49,7 +49,7 @@ class Control
         $this->product = $state->fetch();
         return $this->product;
     }
-    // Méthode pour récupérer le produit ajouté au panier, et on affiche le produit dans le panier dont l'ID est celui envoyé dans le $_POST qui est hidden
+    // Méthode pour récupérer le produit en base et ensuite l'ajouter au panier, à partir du $_POST['product_id'] pour traitement.php
     public function get_product_cart()
     {
         $request = "SELECT * FROM products WHERE product_id = ?";
@@ -82,5 +82,32 @@ class Control
         $state->execute();
         $this->fourLastProducts = $state->fetchAll();
         return $this->fourLastProducts;
+    }
+    // Méthode pour récupérer les tailles du produit reçu dans $_GET (pour product.php)
+    public function get_product_sizes()
+    {
+        $request = "SELECT * FROM products_size WHERE product_id = ?";
+        $state = $this->mysqlClient->prepare($request);
+        $state->execute([$_GET['product_id']]);
+        $this->product = $state->fetchAll();
+        return $this->product;
+    }
+    // Méthode pour récupérer les tailles du produit reçu dans $_POST (pour traitement.php)
+    public function get_size_post()
+    {
+        $request = "SELECT * FROM products_size WHERE product_id = ?";
+        $state = $this->mysqlClient->prepare($request);
+        $state->execute([$_POST['product_id']]);
+        $this->product = $state->fetchAll();
+        return $this->product;
+    }
+    // Méthode pour récupérer le stock de la taille d'un produit
+    public function get_size_quantity($product_id, $size)
+    {
+        $request = "SELECT `stock` FROM `products_size` WHERE `product_id` = $product_id AND `size` = $size";
+        $state = $this->mysqlClient->prepare($request);
+        $state->execute();
+        $this->product = $state->fetch();
+        return $this->product;
     }
 }

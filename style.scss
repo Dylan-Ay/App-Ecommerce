@@ -9,12 +9,13 @@ $dark-grayish-blue: hsl(219, 9%, 45%);
 $grayish-blue : hsl(220, 14%, 75%);
 $light-grayish-blue: hsl(223, 64%, 98%);
 $white: hsl(0, 0%, 100%);
-$black: hsl(0, 0%, 0%);
+$black: #222;
 
 //Typography
 $font: 'Kumbh Sans', sans-serif;
 $light-weight: 400;
 $half-weight: 500;
+$almost-weight : 600;
 $bold-weight: 700;
 
 //Colors Class
@@ -39,6 +40,7 @@ $bold-weight: 700;
     padding: 14px 0;
     border-radius: 10px;
     font-weight: $bold-weight;
+    background-color: $light-grayish-blue;
 }
 
 // Generals settings
@@ -59,6 +61,9 @@ td{
 }
 .half-bold{
     font-weight: $half-weight;
+}
+.almost-bold{
+    font-weight: $almost-weight;
 }
 .light{
     font-weight: $light-weight;
@@ -187,6 +192,12 @@ header{
             background-color: $primary-color;
             color: white;
         }
+        select{
+            @include product-btn();
+        }
+        .quantity-container, .select-container{
+            width: 30%;
+        }
         .container-qtt{
             display: flex;
             position: relative;
@@ -219,18 +230,25 @@ header{
 
 #cart{
     .name{
-        height: 238px;
-        align-items: center;
         & a{
             width: fit-content;
+        }
+    }
+    .detail-container{
+        padding-top: 99px;
+        & span{
+            font-style: italic;
         }
     }
     .price, .quantity, .total-price{
         height: 222px;
         align-items: center;
     }
-    img{
+    .table-img{
         width: 165px;
+    }
+    .last-seen-img{
+        width: 80%;
     }
     .quantity-input-container{
         width: 95px;
@@ -239,8 +257,14 @@ header{
     .form-control:disabled, .form-control[readonly]{
         background-color: white;
     }
+    .fa-trash{
+        color: $black;
+        &:hover{
+            color: #0a58ca;
+        }
+    }
     .arrow-container {
-        background-color: black;
+        background-color: $black;
         width: 23px;
         & a{
             text-align: center;

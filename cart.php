@@ -1,12 +1,40 @@
 <section class="container" id="cart">
     <h1 class="text-center py-5 border-bottom-title">Le contenu de mon panier.</h1>
-    <?php if (isset($_SESSION['products'])): $products =  $_SESSION['products']; endif;?>
+    <?php if (isset($_SESSION['products'])){
+        $products =  $_SESSION['products']; 
+        foreach ($products as $key => $value) {
+            $_SESSION['last-seen-products'] [] = $value; 
+        };
+    };?>
     <?php if (empty($products)): ?>
         <div class="container-empty text-center">
             <p class='pt-4'>Votre panier est vide.</p><br>
             <a href='index.php'>
-                <div class='btn btn-outline-dark'>Retour à l'accueil</div>
+                <div class='btn btn-outline-dark w-75'>
+                    <i class="fa-solid fa-chevron-right pe-2"></i>Retour à l'accueil
+                </div>
             </a>
+            <p class="pt-5 pb-3 almost-bold border-bottom-title">DERNIERS PRODUITS CONSULTES</p>
+            <?php 
+            if (isset($_SESSION['last-seen-products'])):
+                foreach ($_SESSION['last-seen-products'] as $key => $value) {
+                   $lastSeenProducts [] = $value; 
+                }; 
+                
+                ?>
+                <div class="row justify-content-center">
+                    <?php foreach ($lastSeenProducts as $key => $value):?>
+                        <div class="col-10 col-sm-6 col-md-4 col-lg-3">
+                            <div class="product-content d-flex flex-column align-items-center">
+                                <a class="pt-4" href="index.php?page=product&product_id=<?= array_key_first($lastSeenProducts[$key])?>">
+                                    <?php echo '<img class="last-seen-img" src='.$lastSeenProducts[$key]['picture'].'>';
+                                    echo "<h6 class='pt-3'>". $lastSeenProducts[$key]['name']."</h4>";
+                                    ?>
+                                </a>
+                            </div>
+                        </div>
+                    <?php endforeach; endif;?>
+                </div>
         </div>
         <?php else: ?>
             <?php if (isset($_SESSION['delete'])): echo $_SESSION['delete']; endif;?>
@@ -14,9 +42,9 @@
                 <table class="w-100 table">
                     <thead class="bold">
                         <tr>
-                            <td colspan="2">Products</td>
-                            <td>Price</td>
-                            <td class="text-center">Quantity</td>
+                            <td colspan="2">Produits</td>
+                            <td>Prix</td>
+                            <td class="text-center">Quantité</td>
                             <td>Total</td>
                         </tr>
                     </thead>
@@ -25,13 +53,19 @@
                             <tr class="my-3">
                     <td class="img py-3">
                         <a href="index.php?page=product&product_id=<?=array_key_first($products[$index]);?>">
-                            <img src="<?=$products[$index]['picture']?>" alt="<?=$products[$index]['name']?>">
+                            <img class="table-img" src="<?=$products[$index]['picture']?>" alt="<?=$products[$index]['name']?>">
                         </a>
                     </td>
-                    <td class="d-flex name">
-                         <a href="index.php?page=product&product_id=<?=array_key_first($products[$index]);?>"><?=$products[$index]['name']?></a>
-                        <br>
-                        <a href="traitement.php?action=delete-unit&index=<?=$index?>" class="remove"><i class="fa-solid fa-trash ms-3"></i></a>
+                    <td>
+                        <div class="detail-container">
+                            <div class="d-flex name">
+                                <strong>
+                                    <a href="index.php?page=product&product_id=<?=array_key_first($products[$index]);?>"><?=$products[$index]['name']?></a>
+                                </strong>
+                                <a href="traitement.php?action=delete-unit&index=<?=$index?>" class="remove"><i class="fa-solid fa-trash ms-3"></i></a>
+                            </div>
+                            <span>Taille : <?= $products[$index]['size']?></span>
+                        </div>
                     </td>
                     <td>
                         <span class="price d-flex">
@@ -41,7 +75,7 @@
                     <td>
                         <div class="quantity d-flex">
                             <div class="quantity-input-container d-flex">
-                                <input disabled class="form-control qtt" type="text" name="qtt" value="<?=$products[$index]['quantity']?>" max="<?=$product['max-quantity']?>">
+                                <input disabled class="form-control qtt" type="text" name="qtt" value="<?=$products[$index]['quantity']?>" max="<?=$product['stock']?>">
                                 <div class="arrow-container d-flex flex-column">
                                     <a href="traitement.php?action=increase&index=<?=$index?>"><i class="fa-solid fa-angle-up fa-sm"></i></a>
                                     <a href="traitement.php?action=decrease&index=<?=$index?>"><i class="fa-solid fa-angle-down fa-sm"></i></a>
@@ -68,8 +102,9 @@
                     <?php 
                         $subTotal = 0;
                         foreach ($products as $index => $value) {
-                            $subTotal += $products[$index]['quantity'] * $products[$index]['price'] + $shippingCost;
+                            $subTotal += $products[$index]['total'];
                         }
+                        $subTotal += $shippingCost;
                     ?>
                 </span>
                 <?=number_format($subTotal, 2, ",","") ?>&euro;
@@ -86,19 +121,16 @@
             </div>
         </div>
         <div class="row buttons d-flex flex-column flex-md-row justify-content-evenly py-3">
-            <!-- <input type="submit" value="Update" name="update">
-            <input type="submit" value="Place Order" name="placeorder"> -->
             <p class="col-12 col-lg-6 pt-3 pb-2 order-0 order-lg-1">
-                <a class="d-flex justify-content-center m-auto btn btn-outline-dark" href="traitement.php?action=order">Commander</a>
+                <a class="d-flex justify-content-center m-auto btn btn-outline-dark align-items-center" href="traitement.php?action=order">Commander<i class="fa-solid fa-chevron-right ps-2"></i></a>
             </p>
             <p class="col-12 col-lg-6">
-                <a class="d-flex justify-content-center m-auto mt-3 btn btn-outline-dark" href="traitement.php?action=delete-all">Vider le panier</a> 
+                <a class="d-flex justify-content-center m-auto mt-3 btn btn-outline-dark align-items-center" href="traitement.php?action=continue-purchase"><i class="fa-solid fa-chevron-left pe-2"></i>Continuer vos achats</a> 
             </p>
         </div>
     </form>
     <?php endif;?>
 </section>
 
-<?php var_dump($_SESSION['products'])?>
-
-<?php if (isset($_SESSION['test'])): echo "test"; endif;?>
+<!-- <?php var_dump($_SESSION['products'])?> -->
+<!-- <?php var_dump($_SESSION['last-seen-products']);?> -->

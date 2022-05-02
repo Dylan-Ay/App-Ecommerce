@@ -30,16 +30,16 @@
                             <a class="nav-link active" href="index.php">Accueil</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="index.php?page=products">Products</a>
+                            <a class="nav-link" href="index.php?page=products">Produits</a>
+                        </li>
+                        <!-- <li class="nav-item ">
+                            <a class="nav-link" href="#">Hommes</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="#">Men</a>
-                        </li>
+                            <a class="nav-link" href="#">Femmes</a>
+                        </li> -->
                         <li class="nav-item ">
-                            <a class="nav-link" href="#">Women</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="#">A Propos</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="#">Contact</a>
