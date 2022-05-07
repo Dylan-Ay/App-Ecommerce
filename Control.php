@@ -24,7 +24,7 @@ class Control
             $state-> bindParam("mail", $mail);
 
             $state->execute();
-            // On récupère le mail de l'user
+            // On récupère le mail du user
             $this->user = $state->fetch();
 
             // On défini en cookie le prénom et nom du user
@@ -46,6 +46,15 @@ class Control
         $request = "SELECT * FROM products WHERE product_id = ?";
         $state = $this->mysqlClient->prepare($request);
         $state->execute([$_GET['product_id']]);
+        $this->product = $state->fetch();
+        return $this->product;
+    }
+    // Méthode pour récuperer le produit selon l'ID reçu en paramètre, à partir de $_SESSION['visited_pages'] pour cart.php
+    public function get_seen_product($id)
+    {
+        $request = "SELECT * FROM products WHERE product_id = ?";
+        $state = $this->mysqlClient->prepare($request);
+        $state->execute([$id]);
         $this->product = $state->fetch();
         return $this->product;
     }

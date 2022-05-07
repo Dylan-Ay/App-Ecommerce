@@ -26,7 +26,7 @@ body {
 }
 
 a {
-  color: #222;
+  color: #111;
   text-decoration: none;
 }
 
@@ -66,6 +66,14 @@ td {
 
 .border-bottom-title {
   border-bottom: 1px solid #eee;
+}
+
+.last-seen-img {
+  width: 100%;
+}
+
+.product-content h6 {
+  text-align: center;
 }
 
 header h1 {
@@ -116,11 +124,49 @@ header .active {
 }
 
 header .nav-link {
-  color: #222;
+  color: #111;
 }
 
 header .user-content a {
   width: 100px;
+}
+
+main .cart-content {
+  position: relative;
+}
+
+main .cart-content #cart-info {
+  position: absolute;
+  right: 0;
+  top: -15px;
+  padding-right: 12px;
+  background-color: white;
+}
+
+main .cart-content #cart-info img {
+  width: 87px;
+}
+
+main .cart-content #cart-info i {
+  color: green;
+}
+
+main .cart-content a {
+  border-radius: 30px;
+}
+
+main .cart-content a:first-of-type {
+  padding: 14px 20px;
+  background-color: white;
+  color: #111;
+  border: 1px solid rgba(0, 0, 0, 0.427);
+}
+
+main .cart-content a:last-of-type {
+  padding: 14px 39px;
+  background-color: #111;
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.427);
 }
 
 #recap .btn {
@@ -158,6 +204,10 @@ header .user-content a {
   color: black;
 }
 
+#product .img-fluid {
+  z-index: -1;
+}
+
 @media screen and (max-width: 992px) {
   #product .img-fluid {
     max-width: 70%;
@@ -184,7 +234,7 @@ header .user-content a {
 
 #product form input {
   padding: 14px 0;
-  border-radius: 10px;
+  border-radius: 30px;
   font-weight: 700;
   background-color: #f7f8fd;
 }
@@ -192,6 +242,10 @@ header .user-content a {
 #product form input[type=number] {
   background-color: #f7f8fd;
   cursor: unset;
+  padding: 14px 0;
+  border-radius: 10px;
+  font-weight: 700;
+  background-color: #f7f8fd;
 }
 
 #product form input[type=submit] {
@@ -274,10 +328,6 @@ header .user-content a {
   width: 165px;
 }
 
-#cart .last-seen-img {
-  width: 80%;
-}
-
 #cart .quantity-input-container {
   width: 95px;
   margin: auto;
@@ -288,7 +338,7 @@ header .user-content a {
 }
 
 #cart .fa-trash {
-  color: #222;
+  color: #111;
 }
 
 #cart .fa-trash:hover {
@@ -296,7 +346,7 @@ header .user-content a {
 }
 
 #cart .arrow-container {
-  background-color: #222;
+  background-color: #111;
   width: 23px;
 }
 

@@ -13,7 +13,7 @@ if (isset($_GET['action'])){
             // J'utilise la méthode "get_product_cart" pour récupérer les informations du produit dont l'id est celui reçu dans "$_POST['product_id']
             $product = $control->get_product_cart();
                 foreach ($product as $key => $value) {
-            }
+                }
             // J'utilise la méthode "get_size_post" pour récupérer les tailles du produit dont l'id est celui reçu dans "$_POST['product_id']"
             $product_sizes = $control->get_size_post();
                 foreach ($product_sizes as $key => $value) {
@@ -42,7 +42,7 @@ if (isset($_GET['action'])){
                         // Affichage du message succès
                         $_SESSION['message'] = 
                         '<div class="alert alert-success text-center" role="alert">
-                            Le produit a bien été ajouté à la liste si $SESSION existe et que on incrémente la quantité.
+                            La quantité du produit a été mise à jour.
                         </div>';
                         header('Location: index.php?page=product&product_id='.$_POST['product_id']);
                     
@@ -65,7 +65,7 @@ if (isset($_GET['action'])){
                             $_SESSION['products'] [$id] = $productInSession;
                             $_SESSION['message'] = 
                             '<div class="alert alert-success text-center" role="alert">
-                                Le produit a bien été ajouté et la quantité a été mise à jour.
+                                Le produit a bien été ajouté au panier.
                             </div>';
                             header('Location: index.php?page=product&product_id='.$_POST['product_id']);
                         }
@@ -112,7 +112,7 @@ if (isset($_GET['action'])){
                                 $_SESSION['products'] [$id] = $productInSession;
                                 $_SESSION['message'] = 
                                 '<div class="alert alert-success text-center" role="alert">
-                                    Le produit a bien été ajouté à la liste si $SESSION est pas defini.
+                                    Le produit a bien été ajouté au panier.
                                 </div>';
                                 header('Location: index.php?page=product&product_id='.$_POST['product_id']);
                                 
@@ -279,4 +279,4 @@ if (isset($_GET['action'])){
             }
         }else {
             echo "Un problème est survenu";
-        }                                        
+        }

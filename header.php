@@ -54,8 +54,12 @@
                             </a>
                             <figcaption>
                                 <?php 
-                                    if ( isset($_SESSION['products'])){ 
-                                        echo count($_SESSION['products']);
+                                    if (isset($_SESSION['products'])){ 
+                                        $totalQuantity = 0;
+                                        foreach ($_SESSION['products'] as $key => $value) {
+                                            $totalQuantity += $_SESSION['products'][$key]['quantity'];
+                                        }
+                                        echo $totalQuantity;
                                     }else{
                                         echo 0;
                                     }
