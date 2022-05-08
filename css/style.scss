@@ -34,6 +34,9 @@ $bold-weight: 700;
 .light-grayish-blue{
     color: $light-grayish-blue;
 }
+.green{
+    color: green;
+}
 
 //Button properties
 @mixin product-btn-add{
@@ -98,10 +101,30 @@ td{
         text-align: center;
     }
 }
+.z-index-to-back{
+    z-index: -100;
+}
+
+.modal-test{
+    &.show{
+        background-color: rgba(0, 0, 0, 0.75);
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        @media screen and (max-width: 991.5px) {
+            
+        }
+    }
+}
 
 //HEADER
 
 header{
+    box-shadow: 0 2px 2px 0 rgba(40, 73, 121, 0.08);
     & h1{
         border-bottom: 1px solid #eee;
     }
@@ -132,8 +155,7 @@ header{
         width: 23px;
         align-items: center;
         justify-content: center;
-    }
-    
+    }   
     & .active{
         font-weight: 700;
     }
@@ -149,34 +171,81 @@ header{
 
 //MAIN
 main{
+    // &.show{
+    //     background-color: rgba(0,0,0,0.9);
+    // }
     .cart-content{
         position: relative;
         & #cart-info{
+            padding: 41px 34px;
+            display: none;
             position: absolute;
             right: 0;
-            top: -15px;
-            padding-right: 12px;
+            top: 0;
             background-color: $white;
+            z-index: 5;
+            @media screen and (max-width: 991.5px) {
+            width: 100%;
+            }
+        &.show{
+            display: block;
+        }
             & img{
                 width: 87px;
             }
-            & i{
-                color: green;
+            & .top-product-content-cart{
+                position: relative;
+            }
+            & .fa-xmark{
+                position: absolute;
+                right: 0;
+                top: 12px;
+                cursor: pointer;
             }
         }
-        & a{
-            border-radius: 30px;
-            &:first-of-type{
-                padding: 14px 20px;
-                background-color: $white;
-                color: $black;
-                border: 1px solid rgba(0, 0, 0, 0.427);
+        .action-btn-cart{
+            text-align: center;
+            @media screen and (max-width: 445px) {
+                flex-direction: column;
             }
-            &:last-of-type{
-                padding: 14px 39px;
-                background-color: $black;
-                color: $white;
-                border: 1px solid rgba(0, 0, 0, 0.427);
+            & a{
+                border-radius: 30px;
+                &:first-of-type{
+                    padding: 14px 20px;
+                    background-color: $white;
+                    color: $black;
+                    border: 1px solid rgba(0, 0, 0, 0.427);
+                    @media screen and (min-width: 991.5px) {
+                        width: 60%;
+                    }
+                    @media screen and (min-width: 500px) and (max-width: 991.5px) {
+                        width: 45%;
+                    }
+                    @media screen and (max-width: 445px) {
+                        padding: 17px 20px;
+                    }
+                    &:hover{
+                        border-color: $black;
+                    }
+                }
+                &:last-of-type{
+                    padding: 14px 39px;
+                    background-color: $black;
+                    color: $white;
+                    @media screen and (min-width: 991.5px) and (max-width: 991.5px) {
+                        width: unset;
+                    }
+                    @media screen and (min-width: 445px) {
+                        width: 45%;
+                    }
+                    @media screen and (max-width: 445px) {
+                        margin-top: 13px;
+                        padding: 18px 47px;
+                    }
+                    &:hover{
+                        background-color: #757575;
+                    }
+                }
             }
         }
     }

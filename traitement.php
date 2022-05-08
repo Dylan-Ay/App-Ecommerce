@@ -40,10 +40,7 @@ if (isset($_GET['action'])){
                         $_SESSION['products'][$id]['total'] = $product['price'] * $_SESSION['products'][$id]['quantity'];
                         unset($_SESSION['delete']);
                         // Affichage du message succès
-                        $_SESSION['message'] = 
-                        '<div class="alert alert-success text-center" role="alert">
-                            La quantité du produit a été mise à jour.
-                        </div>';
+                        $_SESSION['message'] = "<script src='js/product.js'></script>";
                         header('Location: index.php?page=product&product_id='.$_POST['product_id']);
                     
                     // Si le produit n'éxiste pas mais que $_SESSION['products'] existe :
@@ -63,10 +60,7 @@ if (isset($_GET['action'])){
                             );
                             $id = "$product_id-$size";
                             $_SESSION['products'] [$id] = $productInSession;
-                            $_SESSION['message'] = 
-                            '<div class="alert alert-success text-center" role="alert">
-                                Le produit a bien été ajouté au panier.
-                            </div>';
+                            $_SESSION['message'] = "<script src='js/product.js'></script>";
                             header('Location: index.php?page=product&product_id='.$_POST['product_id']);
                         }
                     }
@@ -110,10 +104,7 @@ if (isset($_GET['action'])){
                                 // On défini l'id de l'entrée dans $_SESSION['products'] grâce à l'id du produit + la taille ajouté
                                 $id = "$product_id-$size";
                                 $_SESSION['products'] [$id] = $productInSession;
-                                $_SESSION['message'] = 
-                                '<div class="alert alert-success text-center" role="alert">
-                                    Le produit a bien été ajouté au panier.
-                                </div>';
+                                $_SESSION['message'] = "<script src='js/product.js'></script>";
                                 header('Location: index.php?page=product&product_id='.$_POST['product_id']);
                                 
                             }else{
@@ -223,8 +214,18 @@ if (isset($_GET['action'])){
             
             if (isset($_SESSION['email-login'])){
                 header('Location: order_page.php');
+                unset($_SESSION['delete']);
+                unset($_SESSION['message']);
+                unset($_SESSION['wrong-id']);
+                unset($_SESSION['error-form']);
+                unset($_SESSION['wrong-id']);
             }else{
                 header('Location: login.php');
+                unset($_SESSION['delete']);
+                unset($_SESSION['message']);
+                unset($_SESSION['wrong-id']);
+                unset($_SESSION['error-form']);
+                unset($_SESSION['wrong-id']);
             }
             break;
 
@@ -254,8 +255,7 @@ if (isset($_GET['action'])){
             setcookie('firstname', '', time()-1000);
             setcookie('lastname', '', time()-1000);
             header('Location: logout.php');
-            break;  
-            
+            break;
         // Cas de la suppression de compte
         case "delete-account":
             $deleteAccount = $mysqlClient->prepare("DELETE FROM `users` WHERE `email` = :email");

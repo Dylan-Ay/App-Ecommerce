@@ -17,17 +17,3 @@ function decreaseQtt(){
 
 plusBtn.addEventListener("click", increaseQtt);
 minusBtn.addEventListener("click", decreaseQtt);
-
-// Gestion des messages à afficher lors de l'ajout au panier
-
-let addCartBtn = document.getElementById('add-cart-btn');
-let alertDiv = document.querySelector('.alert');
-
-// function notAllowed(){
-//     addCartBtn.style.cursor = "all-scroll";
-// }
-if (alertDiv.classList.contains("alert-danger")){
-    
-}else{
-    console.log('marche pas');
-}
