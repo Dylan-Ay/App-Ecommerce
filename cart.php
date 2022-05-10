@@ -38,7 +38,7 @@
                                 <strong>
                                     <a href="index.php?page=product&product_id=<?=array_key_first($products[$index]);?>"><?=$products[$index]['name']?></a>
                                 </strong>
-                                <a href="traitement.php?action=delete-unit&index=<?=$index?>" class="remove ms-2">
+                                <a href="product_controller.php?action=delete-unit&index=<?=$index?>" class="remove ms-2">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
                             </div>
@@ -55,8 +55,8 @@
                             <div class="quantity-input-container d-flex">
                                 <input disabled class="form-control qtt" type="text" name="qtt" value="<?=$products[$index]['quantity']?>" max="<?=$product['stock']?>">
                                 <div class="arrow-container d-flex flex-column">
-                                    <a href="traitement.php?action=increase&index=<?=$index?>"><i class="fa-solid fa-angle-up fa-sm"></i></a>
-                                    <a href="traitement.php?action=decrease&index=<?=$index?>"><i class="fa-solid fa-angle-down fa-sm"></i></a>
+                                    <a href="product_controller.php?action=increase&index=<?=$index?>"><i class="fa-solid fa-angle-up fa-sm"></i></a>
+                                    <a href="product_controller.php?action=decrease&index=<?=$index?>"><i class="fa-solid fa-angle-down fa-sm"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -100,10 +100,10 @@
         </div>
         <div class="row buttons d-flex flex-column flex-md-row justify-content-evenly py-3">
             <p class="col-12 col-lg-6 pt-3 pb-2 order-0 order-lg-1">
-                <a class="d-flex justify-content-center m-auto btn btn-outline-dark align-items-center" href="traitement.php?action=order">Commander<i class="fa-solid fa-chevron-right ps-2"></i></a>
+                <a class="d-flex justify-content-center m-auto btn btn-outline-dark align-items-center" href="product_controller.php?action=order">Commander<i class="fa-solid fa-chevron-right ps-2"></i></a>
             </p>
             <p class="col-12 col-lg-6">
-                <a class="d-flex justify-content-center m-auto mt-3 btn btn-outline-dark align-items-center" href="traitement.php?action=continue-purchase"><i class="fa-solid fa-chevron-left pe-2"></i>Continuer vos achats</a> 
+                <a class="d-flex justify-content-center m-auto mt-3 btn btn-outline-dark align-items-center" href="product_controller.php?action=continue-purchase"><i class="fa-solid fa-chevron-left pe-2"></i>Continuer vos achats</a> 
             </p>
         </div>
     </form>
@@ -115,8 +115,8 @@
             <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2">
                 <div class="product-content d-flex flex-column align-items-center">
                     <a class="pt-4" href="index.php?page=product&product_id=<?= $value ?>">
-                        <?php echo '<img class="last-seen-img" src='.$control->get_seen_product($value)['picture'].'>';
-                        echo "<h6 class='pt-3'>". $control->get_seen_product($value)['name']."</h4>";
+                        <?php echo '<img class="last-seen-img" src='.$productController->get_seen_product($value)['picture'].'>';
+                        echo "<h6 class='pt-3'>". $productController->get_seen_product($value)['name']."</h4>";
                         ?>
                     </a>
                 </div>

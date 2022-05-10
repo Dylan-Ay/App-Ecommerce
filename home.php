@@ -1,6 +1,6 @@
 <?php
     //Récupération des 4 derniers produits ajoutés
-    $recentlyAddedProducts = $control->get_four_last_products();
+    $recentlyAddedProducts = $productController->get_four_last_products();
 ?>
 
 <div class="container py-5">

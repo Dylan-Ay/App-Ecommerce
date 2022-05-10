@@ -1,6 +1,6 @@
 <?php 
-    $allProducts = $control->get_all_products();
-    $totalProducts = $control->get_number_of_products();
+    $allProducts = $productController->get_all_products();
+    $totalProducts = $productController->get_number_of_products();
 ?>
 <div class="container py-5">
     <p class="text-center"><?=$totalProducts?> Produits</p>

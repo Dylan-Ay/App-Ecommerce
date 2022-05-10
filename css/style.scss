@@ -139,7 +139,10 @@ header{
             height: 20px;
         }
     }
-    & .fa-regular{
+    & .fa-user{
+        font-size: 21px;
+    }
+    & .fa-bag-shopping{
         font-size: 22px;
     }
     & figcaption{
@@ -147,9 +150,9 @@ header{
         background-color: $primary-color;
         color: white;
         border-radius: 35px;
-        top: -3px;
+        top: 17px;
         display: flex;
-        right: -9px;
+        right: -11px;
         height: 14px;
         font-size: 12px;
         width: 23px;

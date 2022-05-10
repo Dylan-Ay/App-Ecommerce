@@ -16,5 +16,7 @@
     <a class="d-flex justify-content-center m-auto mt-3 btn btn-outline-dark align-items-center bold w-75 mt-5" href="account.php"><i class="fa-solid fa-angle-right me-1"></i>Continuer</a>
 </div>
 
-<?php else: header('Location: index.php'); endif; ?>
-<?php include('footer.php');?>
+<?php 
+    else: header('Location: index.php'); endif;
+    include('footer.php');
+?>

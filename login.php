@@ -33,5 +33,7 @@
     </div>
 </div>
 
-<?php else: header('Location: account.php'); endif;?>
-<?php include('footer.php');?>
+<?php 
+    else: header('Location: account.php'); endif;
+    include('footer.php');
+?>

@@ -21,7 +21,7 @@
                         </button>
                         </div>
                     <div class="col">
-                        <a class="navbar-brand" href="traitement.php?action=unset-accueil">Sneakers</a>
+                        <a class="navbar-brand" href="product_controller.php?action=unset-accueil">Sneakers</a>
                     </div>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -49,8 +49,8 @@
                 <div class="row flex-nowrap">
                     <div class="col">
                         <figure>
-                            <a href="traitement.php?action=unset-panier">
-                                <img src="images/icon-cart-1.svg" alt="Icon panier">
+                            <a href="product_controller?action=unset-panier">
+                            <i class="fa-solid fa-bag-shopping"></i>
                             </a>
                             <figcaption>
                                 <?php 
@@ -68,8 +68,8 @@
                         </figure>
                         </div>
                     <div class="col d-flex align-items-end user-content">
-                        <a href="login.php">
-                            <i class="fa-regular fa-circle-user"></i>
+                        <a href="login.php" class="d-flex align-items-center">
+                            <i class="fa-solid fa-user"></i>
                             <?php if (isset($_COOKIE['firstname'])): echo "<span class='ms-2'>" .$_COOKIE['firstname']."</span>"; endif;?>
                         </a>
                     </div>

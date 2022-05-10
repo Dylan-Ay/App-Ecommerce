@@ -1,9 +1,11 @@
 <?php
     session_start();
-    require_once('mysql.php');
-    require_once('Control.php');
-    // On crée une instance de Control en utilisant l'objet PDO de mysql.php
-    $control = new Control($mysqlClient);
+
+    spl_autoload_register(function ($class_name) {
+        require_once 'model/'.$class_name . '.php';
+    });
+
+    $userController = new User();
     header('Location: index.php');
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
         
@@ -27,7 +29,7 @@
             }
 
             // On récupère l'objet user qui correspond au mail en paramètre
-            $user = $control->get_user($email);
+            $user = $userController->get_user($email);
             // On vérifie que le password reçu en $_POST corresponde au password de l'user récupéré
             if (password_verify($password, $user['pswd'])){
                 $_SESSION['email-login'] = $email;

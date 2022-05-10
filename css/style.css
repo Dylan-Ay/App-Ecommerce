@@ -118,7 +118,11 @@ header figure img {
   height: 20px;
 }
 
-header .fa-regular {
+header .fa-user {
+  font-size: 21px;
+}
+
+header .fa-bag-shopping {
   font-size: 22px;
 }
 
@@ -127,11 +131,11 @@ header figcaption {
   background-color: #ff7d1a;
   color: white;
   border-radius: 35px;
-  top: -3px;
+  top: 17px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  right: -9px;
+  right: -11px;
   height: 14px;
   font-size: 12px;
   width: 23px;

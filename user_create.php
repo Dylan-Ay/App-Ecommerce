@@ -1,8 +1,11 @@
 <?php
     session_start();
-    require_once('mysql.php');
-    require_once('Control.php');
-    $control = new Control($mysqlClient);
+
+    spl_autoload_register(function ($class_name) {
+        require_once 'model/'.$class_name . '.php';
+    });
+    
+    $userController = new User();
 
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
         if (!empty($_POST['website'])){
@@ -11,7 +14,7 @@
         }
         // On récupèré le mail en $_POST ensuite on appelle la méthode get_user avec ce mail récupéré. 
         $mail = $_POST['email-login'];
-        $mailDataBase = $control->get_user($mail);
+        $mailDataBase = $userController->get_user($mail);
         
         //Si le mail récupéré est égal à un mail de la table user de la colonne 'email' alors on renvoi une erreur.
         if ($mail === $mailDataBase['email']){
@@ -32,7 +35,7 @@
 
             $_SESSION['email-login'] = $_POST['email-login'];
             $mail = $_POST['email-login'];
-            $user = $control->get_user($mail);
+            $user = $userController->get_user($mail);
             
             setcookie('adress', $_POST['adress']);
             $adress = htmlspecialchars(trim($_POST['adress']));
@@ -96,22 +99,8 @@
         // Si les input sont définis alors on créer la requête SQL que l'on met dans $insertUser
         if ( isset($firstName) && isset($lastName) && isset($mail) && isset($adress) && isset($city) && isset($zip) && isset($country) && isset($dpt) && isset($phone) && isset($pswd) ){
 
-            $insertUser = $mysqlClient->prepare('INSERT INTO users(firstname, lastname, email, adress, city, zip, country, department, phone, pswd) VALUES (:firstname, :lastname, :email, :adress, :city, :zip, :country, :department, :phone, :pswd)');
-
-        // On execute l'insertion en ajoutant dans chaque champ sa valeur correspondante reçu dans $_POST
-            $insertUser->execute([
-                'firstname'=> $firstName,
-                'lastname'=> $lastName,
-                'email' => $mail,
-                'adress' => $adress,
-                'city' => $city,
-                'zip' => $zip,
-                'country' => $country,
-                'department' => $dpt,
-                'phone' => $phone,
-                'pswd' => $password,
-            ]);
+            $userController->create_user($firstName, $lastName, $mail, $adress, $city, $zip, $country, $dpt, $phone, $password);
         }
         else{
             header('Location: create_account.php');
-        }       
+        }

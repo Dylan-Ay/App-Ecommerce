@@ -8,11 +8,13 @@
 
     //Inclusion du header pour chaque page, de la config PDO et de la class Control
     include('header.php');
-    require_once('mysql.php');
-    require_once('Control.php');
+    
+    spl_autoload_register(function ($class_name) {
+        require_once 'model/'.$class_name . '.php';
+    });
 
     //Instanciation de la class Control pour chaque page produit
-    $control = new Control($mysqlClient);
+    $productController = new Product();
 
     // Include la page demandé 
     include $page . '.php';

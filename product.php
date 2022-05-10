@@ -1,7 +1,7 @@
 <?php
     if (isset($_GET['product_id'])) {
-        $product = $control->get_product();
-        $product_sizes = $control->get_product_sizes();
+        $product = $productController->get_product();
+        $product_sizes = $productController->get_product_sizes();
         foreach ($product_sizes as $key => $value) {
             
             $sizes [] = $product_sizes[$key]['size'];
@@ -40,14 +40,14 @@
                 </div>
             </div>
             <div class="action-btn-cart d-flex justify-content-between align-items-center">
-                <a class="me-lg-2" href="traitement.php?action=unset-panier">Afficher le panier 
+                <a class="me-lg-2" href="product_controller.php?action=unset-panier">Afficher le panier 
                     <?php $totalQuantity = 0;
                         foreach ($_SESSION['products'] as $key => $value) {
                             $totalQuantity += $_SESSION['products'][$key]['quantity'];
                         }
                         echo "($totalQuantity)"; ?>
                 </a>
-                <a class="ms-lg-2" href="traitement.php?action=order">Paiement</a>
+                <a class="ms-lg-2" href="product_controller.php?action=order">Paiement</a>
             </div>
         <?php endif;?>
     </div>
@@ -63,7 +63,7 @@
             <span id="price" class="bold mb-3 d-block text-center">
                 <?= $product['price']?>&euro;
             </span>
-            <form action="traitement.php?action=add" class="align-items-center py-3" id="add-cart-form" method="post">
+            <form action="product_controller.php?action=add" class="align-items-center py-3" id="add-cart-form" method="post">
                 <div class="input-container d-flex w-75 justify-content-evenly text-center">
                     <div class="select-container">
                         <label for="size">Taille</label>
@@ -105,8 +105,8 @@
             <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2">
                 <div class="product-content d-flex flex-column align-items-center">
                     <a href="index.php?page=product&product_id=<?= $value ?>">
-                        <?php echo '<img class="last-seen-img" src='.$control->get_seen_product($value)['picture'].'>';
-                        echo "<h6 class='pt-3'>". $control->get_seen_product($value)['name']."</h4>";
+                        <?php echo '<img class="last-seen-img" src='.$productController->get_seen_product($value)['picture'].'>';
+                        echo "<h6 class='pt-3'>". $productController->get_seen_product($value)['name']."</h4>";
                         ?>
                     </a>
                 </div>

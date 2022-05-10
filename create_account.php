@@ -57,5 +57,7 @@
     </form>
 </div>
 
-<?php else: header('Location: index.php'); endif;?>
-<?php include('footer.php');?>
+<?php 
+    else: header('Location: index.php'); endif;
+    include('footer.php');
+?>

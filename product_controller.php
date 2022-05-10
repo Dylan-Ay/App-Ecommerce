@@ -1,8 +1,11 @@
 <?php
 session_start();
-require_once('mysql.php');
-require_once('Control.php');
-$control = new Control($mysqlClient);
+
+spl_autoload_register(function ($class_name) {
+    require_once 'model/'.$class_name . '.php';
+});
+
+$productController = new Product();
 
 // Si $_GET a reçu le mot 'action' 
 if (isset($_GET['action'])){
@@ -11,11 +14,11 @@ if (isset($_GET['action'])){
         
         case 'add':
             // J'utilise la méthode "get_product_cart" pour récupérer les informations du produit dont l'id est celui reçu dans "$_POST['product_id']
-            $product = $control->get_product_cart();
+            $product = $productController->get_product_cart();
                 foreach ($product as $key => $value) {
                 }
             // J'utilise la méthode "get_size_post" pour récupérer les tailles du produit dont l'id est celui reçu dans "$_POST['product_id']"
-            $product_sizes = $control->get_size_post();
+            $product_sizes = $productController->get_size_post();
                 foreach ($product_sizes as $key => $value) {
                     $sizes [] = $product_sizes[$key]['size'];
                 }
@@ -26,7 +29,7 @@ if (isset($_GET['action'])){
                     $product_id = (int)$_POST['product_id'];
                     $quantity = (int)$_POST['quantity'];
                     $size = (int)$_POST['size'];
-                    $stockDB = $control->get_size_quantity($product_id, $size);
+                    $stockDB = $productController->get_size_quantity($product_id, $size);
                         foreach ($stockDB as $key => $value) {
                             $stock = $value; // Je récupère le stock de la taille du produit reçu en POST
                         }
@@ -79,7 +82,7 @@ if (isset($_GET['action'])){
                         $product_id = (int)$_POST['product_id'];
                         $size = (int)$_POST['size'];
                         $quantity = (int)$_POST['quantity'];
-                        $stockDB = $control->get_size_quantity($product_id, $size);
+                        $stockDB = $productController->get_size_quantity($product_id, $size);
                         foreach ($stockDB as $key => $value) {
                             $stock = $value; // Je récupère le stock de la taille du produit reçu en POST
                         }
@@ -248,34 +251,6 @@ if (isset($_GET['action'])){
             unset($_SESSION['wrong-id']);
             header('Location: index.php');
             break;
-
-        // Cas de la déconnexion
-        case "logout":
-            unset($_SESSION['email-login']);
-            setcookie('firstname', '', time()-1000);
-            setcookie('lastname', '', time()-1000);
-            header('Location: logout.php');
-            break;
-        // Cas de la suppression de compte
-        case "delete-account":
-            $deleteAccount = $mysqlClient->prepare("DELETE FROM `users` WHERE `email` = :email");
-            $deleteAccount->execute(
-                array(
-                    'email' => $_SESSION['email-login']
-                    )
-                );
-                if ( isset($_SERVER['HTTP_COOKIE']) || isset($_SESSION['email-login']) ){
-                    $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
-                    foreach ($cookies as $cookie) {
-                        $parts = explode('=', $cookie);
-                        $name = trim($parts[0]);
-                        setcookie($name, '', time()-1000);
-                        setcookie($name, '', time()-1000, '/');
-                    }
-                    unset($_SESSION);
-                }
-                header('Location: account_deleted.php');
-                break;
             }
         }else {
             echo "Un problème est survenu";

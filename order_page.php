@@ -6,11 +6,5 @@
 
 
     // Adresse de livraison + valider la commande + retour au panier + afficher message de succès 
-?>
 
-
-
-
-
-
-<?php include('footer.php');?>
+    include('footer.php');
