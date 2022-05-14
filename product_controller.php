@@ -251,7 +251,17 @@ if (isset($_GET['action'])){
             unset($_SESSION['wrong-id']);
             header('Location: index.php');
             break;
-            }
-        }else {
-            echo "Un problème est survenu";
-        }
+
+        case "close-btn":
+            $index = $_GET["product_id"];
+            unset($_SESSION['delete']);
+            unset($_SESSION['message']);
+            unset($_SESSION['wrong-id']);
+            unset($_SESSION['error-form']);
+            unset($_SESSION['wrong-id']);
+            header("location:".$_SERVER['HTTP_REFERER']);
+            break;
+    }
+}else {
+    echo "Un problème est survenu";
+}

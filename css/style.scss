@@ -174,9 +174,6 @@ header{
 
 //MAIN
 main{
-    // &.show{
-    //     background-color: rgba(0,0,0,0.9);
-    // }
     .cart-content{
         position: relative;
         & #cart-info{
@@ -336,16 +333,6 @@ main{
                 top: 39%;
             }
         }
-        .container-add-cart{
-            position: relative;
-            display: flex;
-            align-items: center;
-            & img{
-                position: absolute;
-                width: 20px;
-                left: 28%;
-            }
-        }
     }
 }
 
@@ -391,5 +378,27 @@ main{
                 background-color: rgba(255, 255, 255, 0.5);
             }
         }
+    }
+}
+
+
+// Animations
+.animation-fade-in-top{
+    opacity: 1;
+    -webkit-animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+
+@keyframes fade-in-top {
+    0% {
+      -webkit-transform: translateY(-50px);
+              transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
     }
 }

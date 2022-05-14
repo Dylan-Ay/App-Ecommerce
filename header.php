@@ -46,7 +46,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="row flex-nowrap">
+                <div class="row flex-nowrap align-items-center">
                     <div class="col">
                         <figure>
                             <a href="product_controller?action=unset-panier">

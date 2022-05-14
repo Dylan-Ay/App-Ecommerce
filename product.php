@@ -18,10 +18,10 @@
 ?>
 <div class="modal-test"></div>
 <div class="cart-content container">
-    <div id="cart-info">
+    <div id="cart-info" class="animation-fade-in-top">
         <div class="top-product-content-cart">
             <span class="d-block"><i class="fa-solid fa-check green"></i> Ajouté au panier</span>
-            <i id="close-btn" class="fa-solid fa-xmark fa-lg"></i>
+            <a href="product_controller.php?action=close-btn"><i id="close-btn" class="fa-solid fa-xmark fa-lg"></i></a>
         </div>
         <?php
         if (isset($_SESSION['products'])):
@@ -85,10 +85,7 @@
                     </div>
                     <input type="hidden" name="product_id" value="<?= $product['product_id']?>">
                 </div>
-                <figure class="container-add-cart w-75">
-                    <img src="images/icon-cart-1-white.svg" alt="cart icon">
-                    <input  class="btn my-3 w-100" id="add-cart-btn" type="submit" name="submit" value="Ajouter au panier">
-                </figure>
+                <input  class="btn my-3 w-75" id="add-cart-btn" type="submit" name="submit" value="Ajouter au panier">
             </form>
             <div class="description">
                 <?=$product['description']?>
