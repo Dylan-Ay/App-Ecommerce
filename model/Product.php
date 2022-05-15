@@ -64,11 +64,11 @@ class Product
         return $this->allProducts;
     }
 
-    // Méthode pour récupérer les 4 derniers produits ajoutés en base de données, classé par date du plus récent.
-    public function get_four_last_products()
+    // Méthode pour récupérer les 5 derniers produits ajoutés en base de données, classé par date du plus récent.
+    public function get_five_last_products()
     {
         $db = $this->dbConnect();
-        $request = "SELECT * FROM products ORDER BY date_added DESC LIMIT 4";
+        $request = "SELECT * FROM products ORDER BY date_added DESC LIMIT 5";
         $state = $db->prepare($request);
         $state->execute();
         $this->fourLastProducts = $state->fetchAll();

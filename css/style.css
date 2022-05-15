@@ -1,3 +1,9 @@
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1500px;
+  }
+}
+
 .primary-color {
   color: #ff7d1a;
 }
@@ -76,8 +82,8 @@ td {
   width: 100%;
 }
 
-.product-content h6 {
-  text-align: center;
+.content-last-seen-product strong {
+  font-weight: 600;
 }
 
 .z-index-to-back {
@@ -98,6 +104,12 @@ td {
 header {
   -webkit-box-shadow: 0 2px 2px 0 rgba(40, 73, 121, 0.08);
           box-shadow: 0 2px 2px 0 rgba(40, 73, 121, 0.08);
+}
+
+@media screen and (max-width: 400px) {
+  header .name {
+    display: none;
+  }
 }
 
 header h1 {
@@ -124,6 +136,10 @@ header .fa-user {
 
 header .fa-bag-shopping {
   font-size: 22px;
+}
+
+header .fa-magnifying-glass {
+  font-size: 20px;
 }
 
 header figcaption {
@@ -155,8 +171,22 @@ header .nav-link {
   color: #111;
 }
 
-header .user-content a {
-  width: 100px;
+main #slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 785px;
+  background-color: #111;
+}
+
+main #slider h1 {
+  color: white;
 }
 
 main .cart-content {
@@ -271,6 +301,36 @@ main .cart-content .action-btn-cart a:last-of-type {
 
 main .cart-content .action-btn-cart a:last-of-type:hover {
   background-color: #757575;
+}
+
+@media screen and (min-width: 768px) {
+  main #products .row {
+    height: 112em;
+  }
+}
+
+@media screen and (min-width: 991.5px) {
+  main #products .row {
+    height: 50em;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  main #products .row {
+    height: 59em;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  main #products .row {
+    height: 63em;
+  }
+}
+
+@media screen and (min-width: 991.5px) {
+  main #products .col-lg-3 {
+    width: 23%;
+  }
 }
 
 #recap .btn {

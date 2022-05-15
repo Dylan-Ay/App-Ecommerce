@@ -107,20 +107,23 @@
             </p>
         </div>
     </form>
+</section>
     <?php endif;?>
     <p class="pt-5 pb-3 almost-bold border-bottom-title text-center">DERNIERS PRODUITS CONSULTES</p>
     <?php if (isset($_SESSION['visited_pages'])):?>
-    <div class="row justify-content-evenly">
-        <?php foreach ($_SESSION['visited_pages'] as $key => $value):?>
-            <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2">
-                <div class="product-content d-flex flex-column align-items-center">
-                    <a class="pt-4" href="index.php?page=product&product_id=<?= $value ?>">
-                        <?php echo '<img class="last-seen-img" src='.$productController->get_seen_product($value)['picture'].'>';
-                        echo "<h6 class='pt-3'>". $productController->get_seen_product($value)['name']."</h4>";
-                        ?>
-                    </a>
+    <section id="last-seen-product">
+        <div class="row justify-content-center">
+            <?php foreach ($_SESSION['visited_pages'] as $key => $value):?>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+                    <div class="product-content d-flex flex-column align-items-center">
+                        <a class="pt-4" href="index.php?page=product&product_id=<?= $value ?>">
+                            <?php echo '<img class="last-seen-img" src='.$productController->get_seen_product($value)['picture'].'>';
+                            echo "<div class='row content-last-seen-product'><h6 class='pt-3'><strong>". $productController->get_seen_product($value)['name']."</strong></h6>";
+                            echo "<span>". $productController->get_seen_product($value)['price'] . "€</span></div>";
+                            ?>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach; endif;?>
-    </div>
-</section>
+            <?php endforeach; endif;?>
+        </div>
+    </section>

@@ -24,29 +24,13 @@
                         <a class="navbar-brand" href="product_controller.php?action=unset-accueil">Sneakers</a>
                     </div>
                 </div>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav justify-content-evenly w-100 align-items-center py-4">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="index.php">Accueil</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="index.php?page=products">Produits</a>
-                        </li>
-                        <!-- <li class="nav-item ">
-                            <a class="nav-link" href="#">Hommes</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="#">Femmes</a>
-                        </li> -->
-                        <li class="nav-item ">
-                            <a class="nav-link" href="#">A Propos</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="row flex-nowrap align-items-center">
+                <div class="row flex-nowrap align-items-center order-lg-1">
+                    <div class="col d-flex align-items-end user-content">
+                        <a href="login.php" class="d-flex align-items-center">
+                            <i class="fa-solid fa-user"></i>
+                            <?php if (isset($_COOKIE['firstname'])): echo "<span class='ms-2 name'>" .$_COOKIE['firstname']."</span>"; endif;?>
+                        </a>
+                    </div>
                     <div class="col">
                         <figure>
                             <a href="product_controller?action=unset-panier">
@@ -66,13 +50,34 @@
                                 ?>
                             </figcaption>
                         </figure>
-                        </div>
-                    <div class="col d-flex align-items-end user-content">
-                        <a href="login.php" class="d-flex align-items-center">
-                            <i class="fa-solid fa-user"></i>
-                            <?php if (isset($_COOKIE['firstname'])): echo "<span class='ms-2'>" .$_COOKIE['firstname']."</span>"; endif;?>
+                    </div>
+                    <div class="col pt-1">
+                        <a href="#">
+                            <i class="fa-solid fa-magnifying-glass"></i>
                         </a>
                     </div>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav justify-content-evenly w-100 align-items-center pt-4 pb-lg-4 flex-md-row">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.php">Accueil</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="index.php?page=products">Produits</a>
+                        </li>
+                        <!-- <li class="nav-item ">
+                            <a class="nav-link" href="#">Hommes</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">Femmes</a>
+                        </li> -->
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">A Propos</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
                 </div>
             </div>   
         </nav>

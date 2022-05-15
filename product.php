@@ -52,9 +52,9 @@
         <?php endif;?>
     </div>
 </div>
-<section id="product" class="container py-3">
+<section id="product" class="container py-5">
     <div class="row justify-content-center pb-3">
-        <div class="col-12 col-lg-6 d-flex justify-content-center">
+        <div class="col-12 col-lg-6 d-flex justify-content-center h-100">
             <img src="<?=$product['picture']?>" class="img-fluid" alt="<?=$product['name']?>">
         </div>
         <div class="col-12 col-lg-6 py-4 align-self-center">
@@ -92,18 +92,18 @@
             </div>
         </div>
     </div>
-    </div>
     <div class="row">
         <div class="pt-5 pb-3 almost-bold border-bottom-title text-center">DERNIERS PRODUITS CONSULTES</div>
     </div>
     <?php if (isset($_SESSION['visited_pages'])):?>
-    <div class="row justify-content-evenly pt-4">
+    <div class="row pt-4 justify-content-evenly">
         <?php foreach ($_SESSION['visited_pages'] as $key => $value):?>
-            <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+            <div class="col-7 col-sm-5 col-md-3 col-xl-2">
                 <div class="product-content d-flex flex-column align-items-center">
                     <a href="index.php?page=product&product_id=<?= $value ?>">
                         <?php echo '<img class="last-seen-img" src='.$productController->get_seen_product($value)['picture'].'>';
-                        echo "<h6 class='pt-3'>". $productController->get_seen_product($value)['name']."</h4>";
+                        echo "<div class='row content-last-seen-product mb-4'><h6 class='pt-3'><strong>". $productController->get_seen_product($value)['name']."</strong></h6>";
+                        echo "<span>". $productController->get_seen_product($value)['price'] . "€</span></div>";
                         ?>
                     </a>
                 </div>
@@ -115,12 +115,20 @@
 <?php 
 // Récupération dans $_SESSION['visited_pages'] des produits visités
 
-// Si $_SESSION['visited_pages'] existe -> Si $_SESSION['visited_pages'] contient l'id $_GET['product_id] ne rien faire, sinon ajouté l'id dans $_SESSION -> Si $_SESSION['visited_pages'] n'existe pas ajouté l'id à $_SESSION
+// if $_SESSION['visted_pages'] isset -> if $_SESSION has 5 elements or more and id isn't in array $_SESSION, delete last element add last element in first. -> in array $_SESSION exists the id, do nothing -> else add the product to $_SESSION.
+
+//else $_SESSION isn't set add product to $_SESSION
+
 if (isset($_SESSION['visited_pages'])){
 
     $visitedPages = $_SESSION['visited_pages'];
-    if (in_array($_GET['product_id'], $visitedPages)){
-       
+
+    if (count($visitedPages) >= 5 && !in_array($_GET['product_id'], $visitedPages )){
+        array_pop($_SESSION['visited_pages']);
+        array_unshift($_SESSION['visited_pages'], $_GET['product_id']);
+    }
+    else if (in_array($_GET['product_id'], $visitedPages)){
+       // ne rien faire
     }else{
         $_SESSION['visited_pages'] [] = $_GET['product_id'];
     }
