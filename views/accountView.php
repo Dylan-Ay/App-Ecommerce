@@ -1,22 +1,22 @@
 <?php
-    session_start();
+    ob_start();
+
     $h1 = "Informations sur mon compte.";
-    $title = "Compte";
-    include('header.php');
+    $title = "Mon compte";
 ?>
 
 <?php if (isset($_SESSION['email-login'])):;?>
 
-<h3 class="text-center pt-3">Bienvenue sur votre compte
+<h3 class="text-center pt-3 px-2">Bienvenue sur votre compte
     <span class="bold"><?= $_COOKIE['firstname'] ." ". $_COOKIE['lastname']."."?></span>
 </h3> 
-<div class="container py-4">
-    <section id="account-delete">
-        <a class="d-flex justify-content-center m-auto mt-3 py-2 btn btn-outline-dark align-items-center bold w-75" href="order_list.php"><i class="fa-solid fa-angle-right me-1"></i>Afficher mes commandes.</a>
-        <a class="d-flex justify-content-center m-auto my-5 py-2 btn btn-outline-dark align-items-center bold w-75" href="account_details.php"><i class="fa-solid fa-angle-right me-1"></i>Afficher ou modifier les informations de mon compte.</a>
-        <a class="d-flex justify-content-center m-auto mt-3 py-2 btn btn-outline-dark align-items-center bold w-75" href="account_pswd.php"><i class="fa-solid fa-angle-right me-1"></i>Modifier le mot de passe de mon compte.</a>
-        <a class="d-flex justify-content-center m-auto mt-5 py-2 btn btn-outline-dark align-items-center bold w-75" href="user_controller.php?action=logout"><i class="fa-solid fa-angle-right me-1"></i>Déconnexion</a>
-        <a class="d-flex justify-content-center m-auto mt-5 py-2 btn btn-outline-danger align-items-center bold w-75" data-toggle="modal" data-target="#exampleModal">
+<div class="container pt-4 pb-5">
+    <section id="account-info">
+        <a class="d-flex justify-content-center m-auto mt-3 py-2 btn btn-outline-dark align-items-center bold" href="order_list.php"><i class="fa-solid fa-angle-right me-1"></i>Afficher mes commandes.</a>
+        <a class="d-flex justify-content-center m-auto my-5 py-2 btn btn-outline-dark align-items-center bold" href="account_details.php"><i class="fa-solid fa-angle-right me-1"></i>Afficher ou modifier les informations de mon compte.</a>
+        <a class="d-flex justify-content-center m-auto mt-3 py-2 btn btn-outline-dark align-items-center bold" href="account_pswd.php"><i class="fa-solid fa-angle-right me-1"></i>Modifier le mot de passe de mon compte.</a>
+        <a class="d-flex justify-content-center m-auto mt-5 py-2 btn btn-outline-dark align-items-center bold" href="user_controller.php?action=logout"><i class="fa-solid fa-angle-right me-1"></i>Déconnexion</a>
+        <a class="d-flex justify-content-center m-auto mt-5 py-2 btn btn-outline-danger align-items-center bold" data-toggle="modal" data-target="#exampleModal">
             <!-- Ajouter bouton retour-->
             <i class="fa-solid fa-angle-right me-1"></i>
             Supprimer mon compte
@@ -45,5 +45,7 @@
 
 <?php 
     else: header('Location: index.php'); endif;
-    include('footer.php');
+    
+    $content = ob_get_clean();
+    require('views/template.php');
 ?>

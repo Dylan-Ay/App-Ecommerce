@@ -1,4 +1,7 @@
 <?php 
+    ob_start();
+    
+    $title = "Sneakers pour Femme et Homme";
     $allProducts = $productController->get_all_products();
     $totalProducts = $productController->get_number_of_products();
 ?>
@@ -20,3 +23,8 @@
         </div>
     </div>
 </section>
+
+<?php 
+    $content = ob_get_clean();
+    require('views/template.php');
+?>

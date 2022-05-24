@@ -2,7 +2,7 @@
 session_start();
 
 spl_autoload_register(function ($class_name) {
-    require_once 'model/'.$class_name . '.php';
+    require_once 'models/'.$class_name . '.php';
 });
 
 $productController = new Product();
@@ -43,7 +43,7 @@ if (isset($_GET['action'])){
                         $_SESSION['products'][$id]['total'] = $product['price'] * $_SESSION['products'][$id]['quantity'];
                         unset($_SESSION['delete']);
                         // Affichage du message succès
-                        $_SESSION['message'] = "<script src='js/product.js'></script>";
+                        $_SESSION['message'] = "<script src='public/js/product.js'></script>";
                         header('Location: index.php?page=product&product_id='.$_POST['product_id']);
                     
                     // Si le produit n'éxiste pas mais que $_SESSION['products'] existe :
@@ -63,7 +63,7 @@ if (isset($_GET['action'])){
                             );
                             $id = "$product_id-$size";
                             $_SESSION['products'] [$id] = $productInSession;
-                            $_SESSION['message'] = "<script src='js/product.js'></script>";
+                            $_SESSION['message'] = "<script src='public/js/product.js'></script>";
                             header('Location: index.php?page=product&product_id='.$_POST['product_id']);
                         }
                     }
@@ -107,7 +107,7 @@ if (isset($_GET['action'])){
                                 // On défini l'id de l'entrée dans $_SESSION['products'] grâce à l'id du produit + la taille ajouté
                                 $id = "$product_id-$size";
                                 $_SESSION['products'] [$id] = $productInSession;
-                                $_SESSION['message'] = "<script src='js/product.js'></script>";
+                                $_SESSION['message'] = "<script src='public/js/product.js'></script>";
                                 header('Location: index.php?page=product&product_id='.$_POST['product_id']);
                                 
                             }else{
@@ -127,8 +127,7 @@ if (isset($_GET['action'])){
                             header('Location: index.php?page=product&product_id='.$_POST['product_id']);
                         }
                     }
-
-                // Suite du case
+                    // require('views/productView.php');
                 break;
 
         // Le cas de ?action=continue-purchase

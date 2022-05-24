@@ -2,7 +2,7 @@
     session_start();
 
     spl_autoload_register(function ($class_name) {
-        require_once 'model/'.$class_name . '.php';
+        require_once 'models/'.$class_name . '.php';
     });
     
     $userController = new User();

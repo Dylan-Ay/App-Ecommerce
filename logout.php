@@ -7,7 +7,7 @@
 <?php if (!isset($_SESSION['email-login'])):?>
 
     <div class="container py-5">
-        <img  class="d-block m-auto pt-3" src="images/logo.svg" alt="Logo du site sneakers">
+        <img  class="d-block m-auto pt-3" src="public/images/logo.svg" alt="Logo du site sneakers">
         <p class="py-4 text-center">
             Vous avez fermé votre session. Vous pouvez laisser votre ordinateur allumé sans risque d'utilisation de votre compte.
             <br><br>

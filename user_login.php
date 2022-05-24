@@ -2,7 +2,7 @@
     session_start();
 
     spl_autoload_register(function ($class_name) {
-        require_once 'model/'.$class_name . '.php';
+        require_once 'models/'.$class_name . '.php';
     });
 
     $userController = new User();
@@ -34,7 +34,7 @@
             if (password_verify($password, $user['pswd'])){
                 $_SESSION['email-login'] = $email;
                 
-                header('Location: account.php');
+                header('Location: index.php?page=account');
                 unset($_SESSION['wrong-id']);
             }
             else{

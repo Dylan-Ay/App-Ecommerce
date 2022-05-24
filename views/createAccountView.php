@@ -1,8 +1,7 @@
 <?php
-    session_start();
+    ob_start();
     $h1 = "Informations sur le compte";
     $title = "Création de compte";
-    include('header.php');
 
     if (!isset($_SESSION['email-login'])):
 ?>
@@ -59,5 +58,7 @@
 
 <?php 
     else: header('Location: index.php'); endif;
-    include('footer.php');
+
+    $content = ob_get_clean();
+    require('views/template.php');
 ?>

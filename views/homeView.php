@@ -1,4 +1,7 @@
 <?php
+    ob_start();
+    $title = "Sneakers - Magasin de Sneakers & Streetwear";
+
     //Récupération des 4 derniers produits ajoutés
     $recentlyAddedProducts = $productController->get_five_last_products();
 ?>
@@ -11,7 +14,7 @@
     <div class="products py-5">
         <div class="row flex-column flex-md-row align-items-center align-items-md-start justify-content-evenly">
             <?php foreach ($recentlyAddedProducts as $product):?>
-                <div class="col-10 col-md-5 col-lg-2">
+                <div class="col-9 col-sm-7 col-md-5 col-lg-2">
                     <a href="index.php?page=product&product_id=<?=$product['product_id']?>" class="product">
                         <img src="<?=$product['picture']?>" class="img-fluid" alt="<?=$product['name']?>">
                         <div class="product-description">
@@ -26,3 +29,8 @@
         </div>
     </div>
 </section>
+
+<?php 
+    $content = ob_get_clean();
+    require('views/template.php');
+?>

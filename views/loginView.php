@@ -1,8 +1,8 @@
 <?php
-    session_start();
+    ob_start();
+
     $h1 = "Bienvenue. Veuillez ouvrir une session.";
-    $title = "Page de connexion";
-    include('header.php');
+    $title = "Connexion";
 ?>
 
 <?php if (!isset($_SESSION['email-login'])):?>
@@ -15,7 +15,7 @@
             <div class="py-3 px-2">
                 En créant votre compte sur Sneakers vous pourrez commander sur notre site et garder un historique de celles-ci.
                 <p>
-                    <a class="d-flex justify-content-center m-auto mt-3 btn btn-outline-dark align-items-center bold w-75" href="create_account.php">
+                    <a class="d-flex justify-content-center m-auto mt-3 btn btn-outline-dark align-items-center bold w-75" href="index.php?page=create-account">
                         <i class="fa-solid fa-angle-right me-1"></i>S'inscrire
                     </a>
                 </p>
@@ -34,6 +34,8 @@
 </div>
 
 <?php 
-    else: header('Location: account.php'); endif;
-    include('footer.php');
+    else: header('Location: index.php?page=account'); endif;
+
+    $content = ob_get_clean();
+    require('views/template.php');
 ?>

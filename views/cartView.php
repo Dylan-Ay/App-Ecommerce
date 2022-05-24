@@ -1,3 +1,8 @@
+<?php 
+    ob_start();
+    $title = "Mon Panier";
+?>
+
 <section class="container" id="cart">
     <h1 class="text-center py-5 border-bottom-title">Le contenu de mon panier.</h1>
     <?php if (isset($_SESSION['products'])){
@@ -6,7 +11,7 @@
     <?php if (empty($products)): ?>
         <div class="container-empty text-center pb-4">
             <p class='pt-4'>Votre panier est vide.</p><br>
-            <a href='index.php'>
+            <a href='index.php?page=home'>
                 <div class='btn btn-outline-dark w-75'>
                     <i class="fa-solid fa-chevron-right pe-2"></i>Retour à l'accueil
                 </div>
@@ -111,8 +116,8 @@
     <?php endif;?>
     <p class="pt-5 pb-3 almost-bold border-bottom-title text-center">DERNIERS PRODUITS CONSULTES</p>
     <?php if (isset($_SESSION['visited_pages'])):?>
-    <section id="last-seen-product">
-        <div class="row justify-content-center">
+    <section id="last-seen-product" class="container">
+        <div class="row justify-content-evenly w-100 m-auto pt-3 pb-5">
             <?php foreach ($_SESSION['visited_pages'] as $key => $value):?>
                 <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2">
                     <div class="product-content d-flex flex-column align-items-center">
@@ -127,3 +132,8 @@
             <?php endforeach; endif;?>
         </div>
     </section>
+
+<?php 
+    $content = ob_get_clean();
+    require('views/template.php');
+?>

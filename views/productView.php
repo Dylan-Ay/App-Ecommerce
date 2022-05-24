@@ -1,4 +1,6 @@
-<?php
+<?php  
+    ob_start();
+    
     if (isset($_GET['product_id'])) {
         $product = $productController->get_product();
         $product_sizes = $productController->get_product_sizes();
@@ -15,6 +17,8 @@
             // Si l'ID du produit n'est pas spécifié
             exit("<p class='text-center display-1 pt-5'>Le produit n'éxiste pas !</p>");
     }
+
+    $title = $product['name'];
 ?>
 <div class="modal-test"></div>
 <div class="cart-content container">
@@ -77,8 +81,8 @@
                     <div class="quantity-container">
                         <label for="qtt">Quantité</label>
                         <div class="container-qtt">
-                            <img src="images/icon-minus.svg" id="minus" alt="minus icon">
-                            <img src="images/icon-plus.svg" id="plus" alt="minus icon">
+                            <img src="public/images/icon-minus.svg" id="minus" alt="minus icon">
+                            <img src="public/images/icon-plus.svg" id="plus" alt="minus icon">
                             <input  class="btn w-100 no-arrow mt-2" type="number" name="quantity" id="qtt" 
                             value="1" min="1" placeholder="Quantity" required>
                         </div>
@@ -128,10 +132,14 @@ if (isset($_SESSION['visited_pages'])){
         array_unshift($_SESSION['visited_pages'], $_GET['product_id']);
     }
     else if (in_array($_GET['product_id'], $visitedPages)){
-       // ne rien faire
+       
     }else{
         $_SESSION['visited_pages'] [] = $_GET['product_id'];
     }
 }else{
     $_SESSION['visited_pages'] [] = $_GET['product_id'];
 }
+
+
+$content = ob_get_clean();
+require('views/template.php');

@@ -329,7 +329,37 @@ main .cart-content .action-btn-cart a:last-of-type:hover {
 
 @media screen and (min-width: 991.5px) {
   main #products .col-lg-3 {
-    width: 23%;
+    width: 20.5%;
+  }
+}
+
+@media screen and (min-width: 991.5px) {
+  main #account-details form {
+    width: 75%;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  main #account-details form {
+    width: 50%;
+    margin: auto;
+  }
+}
+
+main #account-info .btn {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  main #account-info .btn {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  main #account-info .btn {
+    width: 60%;
   }
 }
 
@@ -505,6 +535,14 @@ main .cart-content .action-btn-cart a:last-of-type:hover {
 
 #cart .arrow-container a:hover {
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+footer {
+  background-color: #111;
+}
+
+footer a {
+  color: white;
 }
 
 .animation-fade-in-top {

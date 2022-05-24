@@ -286,7 +286,30 @@ main{
         }
         @media screen and (min-width: 991.5px) {
             .col-lg-3{
-                width: 23%;
+                width: 20.5%;
+            }
+        }
+    }
+    #account-details{
+        form{
+            @media screen and (min-width: 991.5px) {
+                width: 75%;
+                margin: auto;
+            }
+            @media screen and (min-width: 1200px) {
+                width: 50%;
+                margin: auto;
+            }
+        }
+    }
+    #account-info{
+        .btn{
+            width: 100%;
+            @media screen and (min-width: 768px) {
+                width: 75%;
+            }
+            @media screen and (min-width: 1200px) {
+                width: 60%;
             }
         }
     }
@@ -423,6 +446,15 @@ main{
                 background-color: rgba(255, 255, 255, 0.5);
             }
         }
+    }
+}
+
+// FOOTER
+
+footer{
+    background-color: $black;
+    a{
+        color: $white;
     }
 }
 
