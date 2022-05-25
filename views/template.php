@@ -11,6 +11,9 @@
     <script src="https://kit.fontawesome.com/aadee783c9.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+    <!-------- HEADER -------->
+
     <header>
         <nav class="navbar navbar-expand-lg py-3">
             <div class="container">
@@ -85,6 +88,9 @@
             <h1 class="text-center py-5 mx-3"><?= $h1?></h1>
         <?php endif;?>
     </header>
+
+    <!-------- MAIN -------->
+    
     <main>
 
         <?= $content ?>
@@ -97,7 +103,7 @@
     <!------- FOOTER ------->
     <footer class="w-100 py-4 flex-shrink-0">
         <div class="container py-4">
-            <div class="row gy-4 gx-5">
+            <div class="row gy-4 gx-5 w-100">
                 <div class="col-lg-4 col-md-6">
                     <h5 class="h1 text-white">Sneakers</h5>
                     <p class="small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
@@ -106,7 +112,7 @@
                 <div class="col-lg-4 col-md-12">
                     <h5 class="text-white mb-3">Pages du site</h5>
                     <nav class="list-unstyled text-muted">
-                        <li><a href="index.php">Accueil</a></li>
+                        <li><a href="index.php?page=home">Accueil</a></li>
                         <li><a href="index.php?page=products">Produits</a></li>
                         <li><a href="#">A Propos</a></li>
                         <li><a href="#">Contact</a></li>

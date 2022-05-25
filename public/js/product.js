@@ -2,7 +2,7 @@
 
 let form = document.getElementById('add-cart-form');
 let alertDiv = document.querySelector('.alert');
-let main = document.querySelector('.modal-test');
+let main = document.querySelector('.modal-background');
 let cartInfo = document.getElementById('cart-info');
 let closeBtn = document.getElementById('close-btn');
 

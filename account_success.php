@@ -1,8 +1,7 @@
 <?php
-    session_start();
+    ob_start();
     $h1 = "Votre compte a été crée !";
-    $title = "Sneakers";
-    include('header.php');
+    $title = "Sneakers - Magasin de Sneakers & Streetwear";
 ?>
 
 <?php if (isset($_SESSION['email-login'])):?>
@@ -17,6 +16,7 @@
 </div>
 
 <?php 
-    else: header('Location: index.php'); endif;
-    include('footer.php');
+    else: header('Location: index.php?page=home'); endif;
+    $content = ob_get_clean();
+    require('views/template.php');
 ?>

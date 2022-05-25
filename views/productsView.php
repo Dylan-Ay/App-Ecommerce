@@ -5,6 +5,9 @@
     $allProducts = $productController->get_all_products();
     $totalProducts = $productController->get_number_of_products();
 ?>
+
+<!-------- Products list -------->
+
 <section id="products" class="container py-5">
     <p class="text-center"><?=$totalProducts?> Produits</p>
     <div class="products-content py-5">

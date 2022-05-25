@@ -6,16 +6,20 @@
     if (!isset($_SESSION['email-login'])):
 ?>
 
-<div class="container py-5">
+<!-------- Account creation form -------->
+
+<section id="create-account" class="container py-5">
     <?php if (isset($_SESSION['error-form'])): echo $_SESSION['error-form']; endif;?>
-    <p class="py-3">
-        <span class="bold">Important:</span> Si vous avez déjà un compte, merci de vous connecter à la page <a href="login.php"><u>d'ouverture de session</u></a>.
-        <p class="text-end">
-            <span class="red bold">*</span> Information requise.
+    <div class="important">
+        <p class="py-3 text-center">
+            <span class="bold">Important:</span> Si vous avez déjà un compte, merci de vous connecter à la page <a href="index.php?page=login"><u>d'ouverture de session</u></a>.
+            <p class="text-end">
+                <span class="red bold">*</span> Information requise.
+            </p>
         </p>
-    </p>
+    </div>
     
-    <h3 class="text-center pt-5">Vos données personnelles</h3>
+    <h3 class="text-center">Vos données personnelles</h3>
     <form action="user_create.php" class="form-group d-flex flex-column" method="post">
         <label for="firstname">Prénom <span class="red">*</span></label>
         <input class="py-2" type="text" name="firstname" id="firstname" required>
@@ -45,19 +49,19 @@
         <label class="mt-3" for="phone">Numéro de téléphone <span class="red">*</span></label>
         <input class="py-2" type="tel" name="phone" id="phone" required>
 
-        <h3 class="text-center pt-5">Votre mot de passe <span class="red">*</span></h3>
+        <h3 class="text-center pt-5">Votre mot de passe</h3>
         <label for="pswd">Mot de passe <span class="red">*</span></label>
         <input class="py-2" type="password" name="pswd" id="pswd" >
 
         <label class="mt-3" for="pswd-confirmation">Confirmez votre mot de passe <span class="red">*</span></label>
         <input class="py-2 mb-4" type="password" name="pswd-confirmation" id="pswd-confirmation" >
         <input type="text" id="website" name="website" hidden>
-        <input class="btn btn-dark w-50 m-auto" type="submit" value="Créer mon compte">
+        <input class="btn btn-dark" type="submit" value="Créer mon compte">
     </form>
-</div>
+</section>
 
 <?php 
-    else: header('Location: index.php'); endif;
+    else: header('Location: index.php?page=home'); endif;
 
     $content = ob_get_clean();
     require('views/template.php');

@@ -215,14 +215,14 @@ if (isset($_GET['action'])){
         case "order":
             
             if (isset($_SESSION['email-login'])){
-                header('Location: order_page.php');
+                header('Location: index.php?page=order-page');
                 unset($_SESSION['delete']);
                 unset($_SESSION['message']);
                 unset($_SESSION['wrong-id']);
                 unset($_SESSION['error-form']);
                 unset($_SESSION['wrong-id']);
             }else{
-                header('Location: login.php');
+                header('Location: index.php?page=login');
                 unset($_SESSION['delete']);
                 unset($_SESSION['message']);
                 unset($_SESSION['wrong-id']);
@@ -238,7 +238,7 @@ if (isset($_GET['action'])){
             unset($_SESSION['wrong-id']);
             unset($_SESSION['error-form']);
             unset($_SESSION['wrong-id']);
-            header('Location:index.php?page=cart');
+            header('Location: index.php?page=cart');
             break;
 
         // Lorsqu'on clique sur le logo accueil cela enlève les différents messages en session
@@ -248,7 +248,7 @@ if (isset($_GET['action'])){
             unset($_SESSION['wrong-id']);
             unset($_SESSION['error-form']);
             unset($_SESSION['wrong-id']);
-            header('Location: index.php');
+            header('Location: index.php?page=home');
             break;
 
         case "close-btn":

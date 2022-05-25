@@ -90,7 +90,7 @@ td {
   z-index: -100;
 }
 
-.modal-test.show {
+.modal-background.show {
   background-color: rgba(0, 0, 0, 0.75);
   position: fixed;
   z-index: 1;
@@ -363,39 +363,28 @@ main #account-info .btn {
   }
 }
 
-#recap .btn {
-  width: 200px;
+@media screen and (min-width: 768px) {
+  #login a[href="index.php?page=create-account"] {
+    width: 74%;
+  }
 }
 
-#recap .qtt {
-  width: 70px;
-  border-radius: unset;
+@media screen and (min-width: 991.5px) {
+  #login a[href="index.php?page=create-account"] {
+    width: 50%;
+  }
 }
 
-#recap .qtt:disabled {
-  background-color: white;
+@media screen and (min-width: 768px) {
+  #login #form .form-control {
+    width: 74%;
+  }
 }
 
-#recap .name {
-  width: 100px;
-}
-
-#recap .price {
-  width: 100px;
-}
-
-#recap .arrow-container {
-  background-color: black;
-  width: 16px;
-}
-
-#recap .arrow-container a {
-  color: white;
-}
-
-#recap .arrow-container a:hover {
-  background-color: rgba(255, 255, 255, 0.5);
-  color: black;
+@media screen and (min-width: 991.5px) {
+  #login #form .form-control {
+    width: 35%;
+  }
 }
 
 #product .img-fluid {
@@ -487,6 +476,10 @@ main #account-info .btn {
   width: fit-content;
 }
 
+#cart .empty-cart-pb {
+  padding-bottom: 25.2em;
+}
+
 #cart .detail-container {
   padding-top: 99px;
 }
@@ -535,6 +528,33 @@ main #account-info .btn {
 
 #cart .arrow-container a:hover {
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+#cart .btn-outline-dark {
+  width: 60%;
+}
+
+#create-account form {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+}
+
+#create-account label {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+#create-account input {
+  width: 35em;
+  max-width: 100%;
+}
+
+#create-account .btn-dark {
+  width: 25em;
+  margin: auto;
 }
 
 footer {

@@ -49,3 +49,13 @@ function account()
     global $userController;
     require('views/accountView.php');
 }
+
+function orderPage()
+{
+    require('views/order-pageView.php');
+}
+
+function deleteAccount()
+{
+    require('views/delete-accountView.php');
+}

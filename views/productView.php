@@ -20,7 +20,10 @@
 
     $title = $product['name'];
 ?>
-<div class="modal-test"></div>
+
+<!-------- Modal product to cart-------->
+
+<div class="modal-background"></div>
 <div class="cart-content container">
     <div id="cart-info" class="animation-fade-in-top">
         <div class="top-product-content-cart">
@@ -56,6 +59,9 @@
         <?php endif;?>
     </div>
 </div>
+
+<!-------- Product informations -------->
+
 <section id="product" class="container py-5">
     <div class="row justify-content-center pb-3">
         <div class="col-12 col-lg-6 d-flex justify-content-center h-100">
@@ -92,14 +98,17 @@
                 <input  class="btn my-3 w-75" id="add-cart-btn" type="submit" name="submit" value="Ajouter au panier">
             </form>
             <div class="description">
-                <?=$product['description']?>
+                <?= $product['description']?>
             </div>
         </div>
     </div>
+
+<!-------- Last seen products -------->
+
+    <?php if (isset($_SESSION['visited_pages'])):?>
     <div class="row">
         <div class="pt-5 pb-3 almost-bold border-bottom-title text-center">DERNIERS PRODUITS CONSULTES</div>
     </div>
-    <?php if (isset($_SESSION['visited_pages'])):?>
     <div class="row pt-4 justify-content-evenly">
         <?php foreach ($_SESSION['visited_pages'] as $key => $value):?>
             <div class="col-7 col-sm-5 col-md-3 col-xl-2">
@@ -115,6 +124,8 @@
         <?php endforeach; endif;?>
     </div>
 </section>
+
+<!-------- Last seen products logical -------->
 
 <?php 
 // Récupération dans $_SESSION['visited_pages'] des produits visités

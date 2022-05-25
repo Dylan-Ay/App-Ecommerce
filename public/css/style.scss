@@ -111,7 +111,7 @@ td{
     z-index: -100;
 }
 
-.modal-test{
+.modal-background{
     &.show{
         background-color: rgba(0, 0, 0, 0.75);
         position: fixed;
@@ -314,41 +314,31 @@ main{
         }
     }
 }
+// login
 
-
-// recap.php
-#recap{
-    & .btn{
-        width: 200px;
-    }
-    & .qtt{
-        width: 70px;
-        border-radius: unset;
-        &:disabled{
-            background-color: white;
+#login{
+    a[href="index.php?page=create-account"]{
+        @media screen and (min-width: 768px) {
+            width: 74%;
         }
+        @media screen and (min-width: 991.5px) {
+            width: 50%;
+        }
+        
     }
-    & .name{
-        width: 100px;
-    }
-    & .price{
-        width: 100px;
-    }
-    .arrow-container{
-        background-color: black;
-        width: 16px;
-        & a{
-            color: $white;
-            &:hover{
-                background-color: rgba(255, 255, 255, 0.50);
-                color: black;
+    #form{
+        .form-control{
+            @media screen and (min-width: 768px) {
+                width: 74%;
+            }
+            @media screen and (min-width: 991.5px) {
+                width: 35%;
             }
         }
     }
 }
 
-
-// product.php
+// product
 #product{
     .img-fluid {
         z-index: -1;
@@ -403,12 +393,15 @@ main{
     }
 }
 
-// cart.php
+// cart
 #cart{
     .name{
         & a{
             width: fit-content;
         }
+    }
+    .empty-cart-pb{
+        padding-bottom: 25.2em;
     }
     .detail-container{
         padding-top: 99px;
@@ -447,8 +440,29 @@ main{
             }
         }
     }
+    .btn-outline-dark{
+        width: 60%;
+    }
 }
 
+// create-account
+#create-account{
+    form{
+        width: fit-content;
+        margin: auto;
+    }
+    label{
+        width: fit-content;
+    }
+    input{
+        width: 35em;
+        max-width: 100%;
+    }
+    .btn-dark{
+        width: 25em;
+        margin: auto;
+    }
+}
 // FOOTER
 
 footer{

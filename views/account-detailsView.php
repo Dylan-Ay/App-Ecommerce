@@ -1,9 +1,20 @@
 <?php
-    include('account_details_controller.php');
+    ob_start();
+
     $h1 = "Details de mon compte";
     $title = "Details de mon compte";
-    include('header.php');
+    // Problème à résoudre
+    $userController = new User();
+        $userInformations = $userController->get_user($_SESSION['email-login']);
     
+        foreach ($userInformations as $key => $value) {
+    
+        }
+        $firstName = $userInformations['firstname'];
+        $lastName = $userInformations['lastname'];
+        $email = $userInformations['email'];
+        $number = $userInformations['phone'];
+        
     if (isset($_SESSION['email-login'])):?>
 
     <section id="account-details" class="container py-5">
@@ -27,4 +38,9 @@
             <input class="btn btn-dark w-50 m-auto" type="submit" value="Valider">
         </form>
 
-    <?php else: header('Location: index.php'); endif;  var_dump($userInformations);?>
+<?php 
+    else: header('Location: index.php?page=home'); endif;
+
+    $content = ob_get_clean();
+    require('views/template.php');
+?>

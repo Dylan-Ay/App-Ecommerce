@@ -33,7 +33,7 @@ if (isset($_GET['action'])){
                     }
                     unset($_SESSION);
                 }
-                header('Location: account_deleted.php');
+                header('Location: index.php?page=delete-account');
                 break;
             }
         }else {

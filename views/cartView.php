@@ -2,17 +2,17 @@
     ob_start();
     $title = "Mon Panier";
 ?>
-
+<!-------- Cart recap -------->
 <section class="container" id="cart">
     <h1 class="text-center py-5 border-bottom-title">Le contenu de mon panier.</h1>
     <?php if (isset($_SESSION['products'])){
         $products =  $_SESSION['products'];
     }?>
     <?php if (empty($products)): ?>
-        <div class="container-empty text-center pb-4">
+        <div class="container-empty text-center pb-5">
             <p class='pt-4'>Votre panier est vide.</p><br>
             <a href='index.php?page=home'>
-                <div class='btn btn-outline-dark w-75'>
+                <div class='btn btn-outline-dark'>
                     <i class="fa-solid fa-chevron-right pe-2"></i>Retour à l'accueil
                 </div>
             </a>
@@ -31,7 +31,7 @@
                     </thead>
                     <tbody>
             <?php foreach ($products as $index => $product): // ForEach pour afficher un produit par ligne ?>
-                            <tr class="my-3">
+                <tr class="my-3">
                     <td class="img py-3">
                         <a href="index.php?page=product&product_id=<?=array_key_first($products[$index]);?>">
                             <img class="table-img" src="<?=$products[$index]['picture']?>" alt="<?=$products[$index]['name']?>">
@@ -79,7 +79,7 @@
             <div class="totals col-4 col-md-3 col-xl-2">
                 <p class="mb-0">
                     <span class="text bold">Livraison :</span>
-                        <?= $shippingCost = 15;?>€
+                    <?= $shippingCost = 15;?>€
                 </p>
                 <span class="text bold">Sous-Total :
                     <?php 
@@ -90,7 +90,7 @@
                         $subTotal += $shippingCost;
                     ?>
                 </span>
-                <?=number_format($subTotal, 2, ",","") ?>&euro;
+                <?= number_format($subTotal, 2, ",","") ?>&euro;
                 <p> 
                     <span class="text bold">Total :</span> 
                     <?php 
@@ -99,10 +99,13 @@
                             $total += $subTotal;
                         }
                     ?>
-                <?=number_format($subTotal, 2, ",","") ?>&euro;
+                <?= number_format($subTotal, 2, ",","") ?>&euro;
                 </p>
             </div>
         </div>
+
+<!-------- Call to action buttons -------->      
+
         <div class="row buttons d-flex flex-column flex-md-row justify-content-evenly py-3">
             <p class="col-12 col-lg-6 pt-3 pb-2 order-0 order-lg-1">
                 <a class="d-flex justify-content-center m-auto btn btn-outline-dark align-items-center" href="product_controller.php?action=order">Commander<i class="fa-solid fa-chevron-right ps-2"></i></a>
@@ -114,8 +117,11 @@
     </form>
 </section>
     <?php endif;?>
-    <p class="pt-5 pb-3 almost-bold border-bottom-title text-center">DERNIERS PRODUITS CONSULTES</p>
+
+<!-------- Last seen products -------->
+
     <?php if (isset($_SESSION['visited_pages'])):?>
+    <p class="py-3 almost-bold border-bottom-title text-center">DERNIERS PRODUITS CONSULTES</p>
     <section id="last-seen-product" class="container">
         <div class="row justify-content-evenly w-100 m-auto pt-3 pb-5">
             <?php foreach ($_SESSION['visited_pages'] as $key => $value):?>

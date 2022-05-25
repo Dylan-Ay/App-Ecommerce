@@ -5,9 +5,14 @@
     //Récupération des 4 derniers produits ajoutés
     $recentlyAddedProducts = $productController->get_five_last_products();
 ?>
+
+<!-------- Slider -------->
+
 <section id="slider">
     <h1>Slider</h1>
 </section>
+
+<!-------- Recently added products -------->
 
 <section id="new-products" class="container py-5">
     <h2 class="text-center">Produits récemment ajoutés</h2>
