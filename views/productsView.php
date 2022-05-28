@@ -1,7 +1,7 @@
 <?php 
     ob_start();
     
-    $title = "Sneakers pour Femme et Homme";
+    $title = "Sneakers - Magasin de Sneakers & Streetwear";
     $allProducts = $productController->get_all_products();
     $totalProducts = $productController->get_number_of_products();
 ?>

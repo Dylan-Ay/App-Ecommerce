@@ -16,7 +16,7 @@
             </div>';
         }
         if (!empty($_POST['website'])){
-            header('Location: login.php');
+            header('Location: index.php?page=login');
             exit();
         }
         else{
@@ -43,7 +43,7 @@
                     Erreur : aucun résultat ne correspond à cette adresse électronique et/ou mot de passe.
                     Merci de réessayer.
                 </div>';
-                header('Location: login.php');
+                header('Location: index.php?page=login');
             }
         }
     }

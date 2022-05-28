@@ -9,24 +9,28 @@
 
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
         if (!empty($_POST['website'])){
-            header('Location: create_account.php');
+            header('Location: index.php?page=create-account');
             exit();
         }
-        // On récupèré le mail en $_POST ensuite on appelle la méthode get_user avec ce mail récupéré. 
+        // We get the mail from $_POST then we call the get_user() method, with $_POST['mail'] as parameter. Which allows to check the mail from an user.
+
         $mail = $_POST['email-login'];
         $mailDataBase = $userController->get_user($mail);
         
-        //Si le mail récupéré est égal à un mail de la table user de la colonne 'email' alors on renvoi une erreur.
+        // If the mail already exists in the db, throws an error.
+
         if ($mail === $mailDataBase['email']){
             $_SESSION['error-form'] = 
                 '<div class="alert alert-danger text-center" role="alert">
                     Un compte a déjà été crée avec cette adresse email. Veuillez vous <a href="login.php" class="bold">connecter</a> avec cette adresse email ou créer un compte avec une adresse différente.
                 </div>';
-            header('Location: create_account.php');
+            header('Location: index.php?page=create-account');
         }
-
+        // A vérifier
+        // if not, we check all the inputs
         else if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email-login']) && filter_var($_POST['email-login'], FILTER_VALIDATE_EMAIL)  && !empty($_POST['adress']) && !empty($_POST['city']) && !empty($_POST['zip']) && !empty($_POST['country']) && !empty($_POST['dpt']) && !empty($_POST['phone']) && !empty($_POST['pswd']) && !empty($_POST['pswd-confirmation']) && $_POST['pswd'] === $_POST['pswd-confirmation']){
-            header('Location: account_success.php');
+
+            header('Location: index.php?page=account-success');
             setcookie('firstname', $_POST['firstname']);
             $firstName = htmlspecialchars(trim($_POST['firstname']));
 
@@ -94,7 +98,7 @@
                 Le formulaire comporte une erreur.
                 </div>';
         }
-    }header('Location: account_success.php');
+    }header('Location: index.php?page=account-success');
 
         // Si les input sont définis alors on créer la requête SQL que l'on met dans $insertUser
         if ( isset($firstName) && isset($lastName) && isset($mail) && isset($adress) && isset($city) && isset($zip) && isset($country) && isset($dpt) && isset($phone) && isset($pswd) ){

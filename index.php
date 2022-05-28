@@ -1,9 +1,12 @@
 <?php 
   session_start();
 
-  //Router (Controler frontal)
-  require_once('controller/controller.php');
-  include('controller/account-detailsController.php');
+  // Router (Main controller) calls others controllers
+  
+  require_once('controllers/controller.php');
+  require_once('controllers/account-detailsController.php');
+
+  // Check what page is called according to the URL and send back the view to the user
 
   if (isset($_GET['page'])){
       switch ($_GET['page']) {
@@ -46,6 +49,14 @@
 
         case 'account-details':
           detailsAccount();
+        break;
+
+        case 'account-success':
+          accountSuccess();
+        break;
+
+        case 'logout':
+          logout();
         break;
 
         default:

@@ -3,26 +3,27 @@
 
     $h1 = "Details de mon compte";
     $title = "Details de mon compte";
-    // Problème à résoudre
-    $userController = new User();
+
+    // We define the variables according to the email in $_SESSION
+    if (isset($_SESSION['email-login'])):
+
         $userInformations = $userController->get_user($_SESSION['email-login']);
-    
+
         foreach ($userInformations as $key => $value) {
-    
         }
+    
         $firstName = $userInformations['firstname'];
         $lastName = $userInformations['lastname'];
         $email = $userInformations['email'];
         $number = $userInformations['phone'];
-        
-    if (isset($_SESSION['email-login'])):?>
-
+    ?>
+    
     <section id="account-details" class="container py-5">
         <?php if (isset($_SESSION['error-form'])): echo $_SESSION['error-form']; endif;?>
         <p class="text-end">
             <span class="red bold">*</span> Information requise.
         </p>
-        <form action="account_details_controller.php" class="form-group d-flex flex-column" method="post">
+        <form action="controllers/account-detailsController.php" class="form-group d-flex flex-column" method="post">
             <label for="firstname">Prénom <span class="red">*</span></label>
             <input class="py-2 px-2" type="text" name="firstname" id="firstname" value="<?= $firstName?>" required>
 
@@ -43,4 +44,5 @@
 
     $content = ob_get_clean();
     require('views/template.php');
+    var_dump($_SESSION['email-login']);
 ?>

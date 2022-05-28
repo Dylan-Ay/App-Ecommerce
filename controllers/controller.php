@@ -1,7 +1,7 @@
 <?php
 
 spl_autoload_register(function ($class_name) {
-    require 'models/'.$class_name .'.php';
+    require_once 'models/'.$class_name .'.php';
 });
 
 $productController  = new Product();
@@ -34,7 +34,6 @@ function home()
 function login()
 {
     global $userController;
-    // global $productController;
     require('views/loginView.php');
 }
 
@@ -58,4 +57,14 @@ function orderPage()
 function deleteAccount()
 {
     require('views/delete-accountView.php');
+}
+
+function accountSuccess()
+{
+    require('views/account-successView.php');
+}
+
+function logout()
+{
+    require('views/logoutView.php');
 }

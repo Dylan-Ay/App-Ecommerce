@@ -1,14 +1,15 @@
 <?php
+    ob_start();
+
     $h1 = "Votre session a été fermée.";
-    $title = "Sneakers";
-    include('header.php');
+    $title = "Sneakers - Magasin de Sneakers & Streetwear";
 ?>
 
 <?php if (!isset($_SESSION['email-login'])):?>
 
-    <div class="container py-5">
-        <img  class="d-block m-auto pt-3" src="public/images/logo.svg" alt="Logo du site sneakers">
-        <p class="py-4 text-center">
+    <div class="container py-5 text-center">
+        <span class="display-6 bold">Sneakers</span>
+        <p class="py-4">
             Vous avez fermé votre session. Vous pouvez laisser votre ordinateur allumé sans risque d'utilisation de votre compte.
             <br><br>
             Votre panier en cours a été sauvegardé.
@@ -16,6 +17,8 @@
     </div>
 
 <?php 
-    else: header('Location: index.php'); endif;
-    include('footer.php');
+    else: header('Location: index.php?page=home'); endif;
+
+    $content = ob_get_clean();
+    require('views/template.php');
 ?>

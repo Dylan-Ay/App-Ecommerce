@@ -17,7 +17,7 @@ if (isset($_GET['action'])){
             unset($_SESSION['email-login']);
             setcookie('firstname', '', time()-1000);
             setcookie('lastname', '', time()-1000);
-            header('Location: logout.php');
+            header('Location: index.php?page=logout');
             break;
         // Cas de la suppression de compte
         case "delete-account":
