@@ -8,7 +8,7 @@ Thanks for checking out this back-end personal project.
 
 ## The Project
 
-It's a PHP OOP project, with a MySQL database made with phpMyAdmin with a MVC architecture.
+It's a Sneakers E-Shop in PHP OOP, with a MySQL database made with phpMyAdmin in a MVC architecture.
 
 The functionalities are :
 - Checking a full page of products
