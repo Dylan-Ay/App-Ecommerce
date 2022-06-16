@@ -27,6 +27,7 @@ Future functionalities :
 - Checking previous orders
 - Checkout Page
 - New Categories
+- Search option
 
 Stacks used :
 - PHP
