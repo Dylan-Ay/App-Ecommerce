@@ -26,7 +26,7 @@
                 </div>';
             header('Location: index.php?page=create-account');
         }
-        // A vérifier
+        
         // if not, we check all the inputs
         else if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email-login']) && filter_var($_POST['email-login'], FILTER_VALIDATE_EMAIL)  && !empty($_POST['adress']) && !empty($_POST['city']) && !empty($_POST['zip']) && !empty($_POST['country']) && !empty($_POST['dpt']) && !empty($_POST['phone']) && !empty($_POST['pswd']) && !empty($_POST['pswd-confirmation']) && $_POST['pswd'] === $_POST['pswd-confirmation']){
 
@@ -41,22 +41,16 @@
             $mail = $_POST['email-login'];
             $user = $userController->get_user($mail);
             
-            setcookie('adress', $_POST['adress']);
             $adress = htmlspecialchars(trim($_POST['adress']));
 
-            setcookie('city', $_POST['city']);
             $city = htmlspecialchars(trim($_POST['city']));
 
-            setcookie('zip', $_POST['zip']);
             $zip = htmlspecialchars(trim($_POST['zip']));
 
-            setcookie('country', $_POST['country']);
             $country = htmlspecialchars(trim($_POST['country']));
 
-            setcookie('dpt', $_POST['dpt']);
             $dpt = htmlspecialchars(trim($_POST['dpt']));
 
-            setcookie('phone', $_POST['phone']);
             $phone = htmlspecialchars(trim($_POST['phone']));
 
             $pswd = htmlspecialchars(trim($_POST['pswd']));
@@ -106,5 +100,5 @@
             $userController->create_user($firstName, $lastName, $mail, $adress, $city, $zip, $country, $dpt, $phone, $password);
         }
         else{
-            header('Location: create_account.php');
+            header('Location: index.php?page=create-account');
         }

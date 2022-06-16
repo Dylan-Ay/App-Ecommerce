@@ -103,33 +103,32 @@
     <!------- FOOTER ------->
     <footer class="w-100 py-4 flex-shrink-0">
         <div class="container py-4">
-            <div class="row gy-4 gx-5 w-100">
+            <div class="row text-center text-md-start gy-4 gx-5 w-100">
                 <div class="col-lg-4 col-md-6">
                     <h5 class="h1 text-white">Sneakers</h5>
                     <p class="small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
                     <p class="small text-muted mb-0">&copy; Réalisé par <a href="https://dylanayache.com" target="_blank" class="text-muted">Dylan Ayache</a> - Tous droits réservés.</p>
                 </div>
-                <div class="col-lg-4 col-md-12">
-                    <h5 class="text-white mb-3">Pages du site</h5>
+                <div class="col-md-6 col-lg-2">
                     <nav class="list-unstyled text-muted">
+                    <h5 class="text-white mb-3">Liens rapides</h5>
                         <li><a href="index.php?page=home">Accueil</a></li>
                         <li><a href="index.php?page=products">Produits</a></li>
                         <li><a href="#">A Propos</a></li>
                         <li><a href="#">Contact</a></li>
                     </nav>
                 </div>
-                <!-- <div class="col-lg-2 col-md-6">
-                    <h5 class="text-white mb-3">Quick links</h5>
+                <div class="col-md-6 col-lg-2">
+                    <h5 class="text-white mb-3">Qui sommes-nous</h5>
                     <nav class="list-unstyled text-muted">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Get started</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">CGV</a></li>
+                        <li><a href="#">Politique de confidentialité des données</a></li>
                     </nav>
-                </div> -->
-                <div class="col-lg-4 col-md-6">
+                </div>
+                <div class="col-md-6 col-lg-4">
                     <h5 class="text-white mb-3">Newsletter</h5>
-                    <p class="small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                    <p class="small text-muted">Pour être avertis de toutes les nouveautés, offres et événements.</p>
                     <form action="#">
                         <div class="input-group mb-3">
                             <input class="form-control" type="text" placeholder="Adresse email" aria-label="Recipient's username" aria-describedby="button-addon2">
