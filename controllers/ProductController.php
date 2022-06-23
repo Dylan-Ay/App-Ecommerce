@@ -1,15 +1,10 @@
 <?php
 
-class Product 
+class ProductController
 {
     private $allProducts;
     private $product;
     private $fourLastProducts;
-
-    public function __construct()
-    {
-        
-    }
 
     // Méthode pour afficher dynamiquement chaque produit en fonction de son ID récupéré en $_GET pour product.php
     public function get_product()
@@ -18,17 +13,6 @@ class Product
         $request = "SELECT * FROM products WHERE product_id = ?";
         $state = $db->prepare($request);
         $state->execute([$_GET['product_id']]);
-        $this->product = $state->fetch();
-        return $this->product;
-    }
-
-    // Méthode pour récuperer le produit selon l'ID reçu en paramètre, à partir de $_SESSION['visited_pages'] pour cart.php
-    public function get_seen_product($id)
-    {
-        $db = $this->dbConnect();
-        $request = "SELECT * FROM products WHERE product_id = ?";
-        $state = $db->prepare($request);
-        $state->execute([$id]);
         $this->product = $state->fetch();
         return $this->product;
     }
@@ -107,7 +91,23 @@ class Product
         $this->product = $state->fetch();
         return $this->product;
     }
+
+    // Function to get the product which has been visited from $_SESSION['visited_pages'] for cart.php
+    function get_seen_product($id)
+    {
+        $db = $this->dbConnect();
+        $request = "SELECT * FROM products WHERE product_id = ?";
+        $state = $db->prepare($request);
+        $state->execute([$id]);
+        $this->product = $state->fetch();
+        return $this->product;
+    }
     
+    public function cart()
+    {
+        require('views/product/cart.php');
+    }
+
     // Méthode qui crée la connexion à la base de données
     private function dbConnect()
     {

@@ -4,13 +4,24 @@
   // Router (Main controller) calls others controllers
   
   require_once('controllers/controller.php');
-  require_once('controllers/account-detailsController.php');
+  require_once('controllers/AccountController.php');
+  require_once('controllers/UserController.php');
+  require_once('controllers/HomeController.php');
+
+  $accountController = new AccountController();
+  $userController = new UserController();
+  $productController = new ProductController();
+  $homeController = new HomeController();
+
+  // Functions
+  require_once('service/functions.php');
 
   // Check what page is called according to the URL and send back the view to the user
 
   if (isset($_GET['page'])){
       switch ($_GET['page']) {
 
+        // Products cases
         case 'products':
           listProducts();
         break;
@@ -20,50 +31,51 @@
         break;
 
         case 'cart':
-          cart();
+          $productController->cart();
         break;
 
         case 'home':
-          home();
+          $homeController->getHomePage();
         break;
-
+        
+        // Account cases
         case 'login':
-          login();
+          $accountController->login();
+        break;
+        
+        case 'logout':
+          $accountController->logOut();
         break;
 
-        case 'create-account':
-          createAccount();
-        break;
-        
-        case 'account':
-          account();
-        break;
-        
-        case 'order-page':
-          orderPage();
+        case 'account-menu':
+          $accountController->accountMenu();
         break;
 
         case 'delete-account':
-          deleteAccount();
+          $accountController->deleteAccount();
         break;
 
         case 'account-details':
-          detailsAccount();
+          $accountController->detailsAccount();
         break;
 
         case 'account-success':
-          accountSuccess();
+          $accountController->accountSuccess();
         break;
 
-        case 'logout':
-          logout();
+        case 'create-account':
+          $accountController->accountCreation();
+        break;
+        
+        case 'order-page':
+          $accountController->accountOrder();
         break;
 
         default:
-          home();
+          $homeController->getHomePage();
         break;
     }
     
     }else{
-      home();
+      $homeController->getHomePage();
     }

@@ -30,7 +30,7 @@
                         </tr>
                     </thead>
                     <tbody>
-            <?php foreach ($products as $index => $product): // ForEach pour afficher un produit par ligne ?>
+            <?php foreach ($products as $index => $product): // ForEach to display one product by line ?>
                 <tr class="my-3">
                     <td class="img py-3">
                         <a href="index.php?page=product&product_id=<?=array_key_first($products[$index]);?>">
@@ -128,9 +128,9 @@
                 <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2">
                     <div class="product-content d-flex flex-column align-items-center">
                         <a class="pt-4" href="index.php?page=product&product_id=<?= $value ?>">
-                            <?php echo '<img class="last-seen-img" src='.$productController->get_seen_product($value)['picture'].'>';
-                            echo "<div class='row content-last-seen-product'><h6 class='pt-3'><strong>". $productController->get_seen_product($value)['name']."</strong></h6>";
-                            echo "<span>". $productController->get_seen_product($value)['price'] . "€</span></div>";
+                            <?php echo '<img class="last-seen-img" src='.get_seen_product($value)['picture'].'>';
+                            echo "<div class='row content-last-seen-product'><h6 class='pt-3'><strong>".get_seen_product($value)['name']."</strong></h6>";
+                            echo "<span>".get_seen_product($value)['price'] . "€</span></div>";
                             ?>
                         </a>
                     </div>

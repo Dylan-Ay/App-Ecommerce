@@ -1,13 +1,8 @@
 <?php
 
-class User 
+class UserController
 {
     private $user;
-
-    public function __construct()
-    {
-
-    }
 
     // Méthode pour créer un user, pour user_create.php
     public function create_user($firstName, $lastName, $mail, $adress, $city, $zip, $country, $dpt, $phone, $password)

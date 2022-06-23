@@ -2,10 +2,10 @@
 session_start();
 
 spl_autoload_register(function ($class_name) {
-    require_once 'models/'.$class_name . '.php';
+    require_once 'controllers/'.$class_name . '.php';
 });
 
-$productController = new Product();
+$productController = new ProductController();
 
 // Si $_GET a reçu le mot 'action' 
 if (isset($_GET['action'])){
@@ -127,7 +127,6 @@ if (isset($_GET['action'])){
                             header('Location: index.php?page=product&product_id='.$_POST['product_id']);
                         }
                     }
-                    // require('views/productView.php');
                 break;
 
         // Le cas de ?action=continue-purchase

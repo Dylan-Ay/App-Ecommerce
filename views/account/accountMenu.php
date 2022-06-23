@@ -18,7 +18,7 @@
         <a class="d-flex justify-content-center m-auto mt-3 py-2 btn btn-outline-dark align-items-center bold" href="order_list.php"><i class="fa-solid fa-angle-right me-1"></i>Afficher mes commandes.</a>
         <a class="d-flex justify-content-center m-auto my-5 py-2 btn btn-outline-dark align-items-center bold" href="index.php?page=account-details"><i class="fa-solid fa-angle-right me-1"></i>Afficher ou modifier les informations de mon compte.</a>
         <a class="d-flex justify-content-center m-auto mt-3 py-2 btn btn-outline-dark align-items-center bold" href="account_pswd.php"><i class="fa-solid fa-angle-right me-1"></i>Modifier le mot de passe de mon compte.</a>
-        <a class="d-flex justify-content-center m-auto mt-5 py-2 btn btn-outline-dark align-items-center bold" href="user_controller.php?action=logout"><i class="fa-solid fa-angle-right me-1"></i>Déconnexion</a>
+        <a class="d-flex justify-content-center m-auto mt-5 py-2 btn btn-outline-dark align-items-center bold" href="index.php?page=logout"><i class="fa-solid fa-angle-right me-1"></i>Déconnexion</a>
         <a class="d-flex justify-content-center m-auto mt-5 py-2 btn btn-outline-danger align-items-center bold" data-toggle="modal" data-target="#exampleModal">
             <i class="fa-solid fa-angle-right me-1"></i>
             Supprimer mon compte
@@ -41,7 +41,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                    <a class="btn btn-danger" href="user_controller.php?action=delete-account">Supprimer mon compte</a>
+                    <a class="btn btn-danger" href="index.php?page=delete-account">Supprimer mon compte</a>
                 </div>
             </div>
         </div>

@@ -28,7 +28,7 @@
 
         <div class="col-12">
             <h3 class="text-center">Client enregistré</h3>
-            <form class=" align-items-center form-group d-flex flex-column m-auto py-3" action="user_login.php" method="post" id="form">
+            <form class=" align-items-center form-group d-flex flex-column m-auto py-3" action="index.php?page=login" method="post" id="form">
                 <input class="form-control" type="email" name="email-login" id="email-login" placeholder="Adresse email" required>
                 <input class="form-control my-3" type="password" name="password-login" id="password-login" placeholder="Mot de passe" required>
                 <input type="text" id="website" name="website" hidden>
@@ -39,7 +39,7 @@
 </section>
 
 <?php 
-    else: header('Location: index.php?page=account'); endif;
+    else: header('Location: index.php?page=account-menu'); endif;
 
     $content = ob_get_clean();
     require('views/template.php');

@@ -2,10 +2,10 @@
     session_start();
 
     spl_autoload_register(function ($class_name) {
-        require_once 'models/'.$class_name . '.php';
+        require_once 'controllers/'.$class_name . '.php';
     });
     
-    $userController = new User();
+    $userController = new UserController();
 
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
         if (!empty($_POST['website'])){
